@@ -282,7 +282,7 @@ def analyse_pair(pair, d1, h4, m15, cfg, now):
         return targets[0]
 
     def build(setup, entry, sl_point, zone, conf_i, conf_score, note):
-        sl = sl_point - sgn * 0.1 * a_d1
+        sl = sl_point - sgn * float(cfg.get("slBufferATR", 0.1)) * a_d1  # marge derrière l'invalidation (10 % de l'ATR D1)
         risk = abs(entry - sl)
         if risk <= 0:
             return

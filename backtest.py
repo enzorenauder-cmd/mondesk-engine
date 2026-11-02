@@ -26,6 +26,8 @@ VARIANTS = {
     "tp2": {"rrMin": 1.0, "tpMode": "second"},                 # TP sur la deuxième cible
     "tprr": {"rrMin": 1.5, "tpMode": "rrmin"},                 # TP sur la première cible qui donne RR >= 1,5
     "pullback": {"rrMin": 1.0, "allowH4Pullback": True},       # D1 en tendance + H4 en correction autorisé
+    "sltight": {"rrMin": 1.0, "slBufferATR": 0.03},            # stop plus serré (marge 3 % de l'ATR D1 au lieu de 10 %)
+    "sltight_tprr": {"rrMin": 1.5, "slBufferATR": 0.03, "tpMode": "rrmin"},  # stop serré + TP sur la première cible à RR >= 1,5
 }
 CFG = VARIANTS["base"]
 
