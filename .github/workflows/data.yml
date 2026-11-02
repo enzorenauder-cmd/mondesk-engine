@@ -2,7 +2,10 @@ name: Donnees Twelve Data
 on:
   schedule:
     # Heure UTC : 6 h 50 à 18 h 50 UTC = 7 h 50 à 19 h 50 Paris (hiver), 25 min avant chaque passage du Radar ; lundi-vendredi
-    - cron: "50 6-18 * * 1-5"
+    # GitHub saute parfois un horaire : trois essais par heure, le programme ne retélécharge pas si les données ont moins de 25 min
+    - cron: "38 6-18 * * 1-5"
+    - cron: "47 6-18 * * 1-5"
+    - cron: "56 6-18 * * 1-5"
   workflow_dispatch: {}
 concurrency:
   group: data

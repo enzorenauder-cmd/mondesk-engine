@@ -23,6 +23,11 @@ def main():
     now = datetime.now(timezone.utc)
     meta_p = os.path.join(OUT, "meta.json")
     meta = json.load(open(meta_p)) if os.path.exists(meta_p) else {}
+    if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and meta.get("fetchedAt"):
+        age = (now - engine.parse_t(meta["fetchedAt"])).total_seconds() / 60
+        if age < 25:
+            print(f"données fraîches ({age:.0f} min) : rien à faire")
+            return
     today = now.strftime("%Y-%m-%d")
     first_today = meta.get("d1Date") != today
     h4_due = first_today or now.hour in (8, 12, 16)
