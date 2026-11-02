@@ -7,3 +7,9 @@ Données de marché pour le Radar Forex de l'app Mon Desk.
 
 La clé Twelve Data est un secret du dépôt (`TWELVE_DATA_KEY`) et n'apparaît jamais dans les fichiers.
 Ce n'est pas un conseil financier.
+
+## Backtest
+
+- `hist_fetch.py` + `.github/workflows/hist.yml` : télécharge l'historique 2023-aujourd'hui (branche `hist`) le soir et la nuit, sans empiéter sur les crédits du Radar.
+- `backtest.py` : rejoue le moteur à chaque passage du Radar (bougies clôturées uniquement) et suit chaque signal jusqu'au TP, SL ou expiration.
+- `summarize.py` : statistiques par setup, session, paire, RR, score ; réglages choisis sur 2023-06/2025 et vérifiés sur 07/2025-aujourd'hui. Résultats sur la branche `results`.

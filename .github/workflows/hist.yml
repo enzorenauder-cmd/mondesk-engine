@@ -1,0 +1,69 @@
+name: Historique et backtest
+on:
+  schedule:
+    # 17 h 10 UTC (18 h 10 Paris, hiver) : utilise les crédits restants du jour, jusqu'à 790
+    - cron: "10 17 * * 1-5"
+    # 0 h 30 UTC (1 h 30 Paris) : au plus 330 crédits, pour laisser au Radar ce qu'il lui faut dans la journée
+    - cron: "30 0 * * 2-6"
+  workflow_dispatch:
+    inputs:
+      max_daily:
+        description: "Plafond de credits utilises sur la journee UTC"
+        default: "790"
+      force_backtest:
+        description: "Relancer le backtest meme s'il a deja tourne (oui/non)"
+        default: "non"
+concurrency:
+  group: hist
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  hist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recupere l'historique deja telecharge (branche hist)
+        run: |
+          mkdir -p hist
+          if git fetch origin hist --depth=1; then git archive origin/hist hist | tar x; fi
+          ls hist | wc -l
+      - name: Telecharge la suite de l'historique
+        env:
+          TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
+        run: |
+          MAX="${{ github.event.inputs.max_daily }}"
+          if [ -z "$MAX" ]; then
+            if [ "${{ github.event.schedule }}" = "30 0 * * 2-6" ]; then MAX=330; else MAX=790; fi
+          fi
+          python3 hist_fetch.py --max-daily "$MAX"
+      - name: Publie l'historique (branche hist)
+        run: |
+          cp -r hist /tmp/hist
+          git config user.name "mondesk-bot"
+          git config user.email "mondesk-bot@users.noreply.github.com"
+          git checkout -q --orphan hist-new
+          git rm -rf . -q
+          cp -r /tmp/hist hist
+          git add hist
+          git commit -q -m "historique $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f -q origin hist-new:hist
+      - name: Backtest (une fois l'historique complet)
+        run: |
+          git checkout -q -f ${{ github.sha }}
+          DONE=$(python3 -c "import json;print(json.load(open('/tmp/hist/progress.json')).get('_complete'))")
+          HAS=$(git ls-remote origin results | wc -l)
+          if [ "$DONE" = "True" ] && { [ "$HAS" = "0" ] || [ "${{ github.event.inputs.force_backtest }}" = "oui" ]; }; then
+            python3 backtest.py --hist /tmp/hist --out /tmp/results
+            python3 summarize.py --trades /tmp/results/trades.json --out /tmp/results/summary.json
+            git checkout -q --orphan results-new
+            git rm -rf . -q
+            cp /tmp/results/* .
+            gzip -9 trades.json
+            git add .
+            git commit -q -m "backtest $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push -f -q origin results-new:results
+          else
+            echo "backtest non lance (historique complet : $DONE ; resultats deja presents : $HAS)"
+          fi

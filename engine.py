@@ -285,16 +285,28 @@ def analyse_pair(pair, d1, h4, m15, cfg, now):
         # placement : limite ou marché
         path_done = (price - entry) * sgn / abs(tp - entry)
         conf_age_h = (t_now - parse_t(m15[conf_i]["t"])).total_seconds() / 3600
+        if (price - sl) * sgn <= 0:
+            rejected.append({"pair": pair, "setup": setup, "reason": "prix déjà au-delà de l'invalidation"}); return
         if (price - entry) * sgn <= 0:
-            order = "Buy Limit" if up else "Sell Limit"
-            if (price - sl) * sgn <= 0:
-                rejected.append({"pair": pair, "setup": setup, "reason": "prix déjà sous l'invalidation"}); return
-        elif path_done < 0.4 and conf_age_h < 2:
+            # le prix est déjà revenu sur (ou au-delà de) l'entrée : un ordre limite serait refusé par MT5
+            if conf_age_h < 2:
+                order = "Achat au marché" if up else "Vente au marché"
+                entry = price
+                risk = abs(entry - sl); rr = (abs(tp - entry) - sp) / (risk + sp)
+                if sp > 0.25 * risk:
+                    rejected.append({"pair": pair, "setup": setup, "reason": "prix trop près du stop (spread > 25 %)"}); return
+            else:
+                rejected.append({"pair": pair, "setup": setup, "reason": "entrée déjà dépassée (confirmation de plus de 2 h)"}); return
+        elif path_done < 0.4 and conf_age_h < 2 and \
+                (abs(tp - price) - sp) / (abs(price - sl) + sp) >= rr_min:
             order = "Achat au marché" if up else "Vente au marché"
             entry = price
             risk = abs(entry - sl); rr = (abs(tp - entry) - sp) / (risk + sp)
+        elif path_done < 1:
+            # le prix est parti dans le bon sens : on attend le retour sur l'entrée avec un ordre limite
+            order = "Buy Limit" if up else "Sell Limit"
         else:
-            rejected.append({"pair": pair, "setup": setup, "reason": f"entrée ratée ({path_done:.0%} du chemin déjà fait)"}); return
+            rejected.append({"pair": pair, "setup": setup, "reason": f"objectif déjà atteint ({path_done:.0%} du chemin fait)"}); return
         align = 25 if s_d1["state"] == s_h4["state"] else 12
         zscore = 20 if zone and zone.get("touches", 0) <= 1 else (12 if zone else 8)
         conf = conf_score - (5 if conf_age_h > 2 else 0)
