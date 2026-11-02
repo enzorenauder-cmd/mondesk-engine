@@ -242,6 +242,9 @@ def analyse_pair(pair, d1, h4, m15, cfg, now):
         bias = "buy"
     elif s_d1["state"] == "baissier" and s_h4["state"] == "baissier":
         bias = "sell"
+    elif cfg.get("allowH4Pullback") and s_d1["state"] in ("haussier", "baissier") and s_h4["state"] != s_d1["state"]:
+        # variante : D1 en tendance, H4 en correction -> on cherche la reprise M15 dans le sens du D1
+        bias = "buy" if s_d1["state"] == "haussier" else "sell"
     h4_zones = [dict(z, kind="OB H4") for z in order_blocks(h4, s_h4, a_h4)] + \
                [dict(z, kind="FVG H4") for z in fvgs(h4, a_h4, 0.15)]
     h4_zones = [z for z in h4_zones if z["i"] >= len(h4) - 120]
@@ -266,7 +269,17 @@ def analyse_pair(pair, d1, h4, m15, cfg, now):
         targets = sorted({p for _, p, side in lv if (side == "high" if up else side == "low") and (p - entry) * sgn > 0.3 * abs(entry - sl)}
                          | {p for _, p in (s_h4["swings_hi"] if up else s_h4["swings_lo"])[-6:] if (p - entry) * sgn > 0.3 * abs(entry - sl)},
                          key=lambda p: (p - entry) * sgn)
-        return targets[0] if targets else None
+        if not targets:
+            return None
+        mode = cfg.get("tpMode", "first")
+        if mode == "second" and len(targets) > 1:
+            return targets[1]
+        if mode == "rrmin":  # première cible qui donne au moins rrMin
+            for t_ in targets:
+                if (abs(t_ - entry) - spread(pair)) / (abs(entry - sl) + spread(pair)) >= rr_min:
+                    return t_
+            return targets[-1]
+        return targets[0]
 
     def build(setup, entry, sl_point, zone, conf_i, conf_score, note):
         sl = sl_point - sgn * 0.1 * a_d1

@@ -46,13 +46,7 @@ def bucket(v, edges):
     return f"{edges[-1]}+"
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--trades", required=True)
-    ap.add_argument("--out", required=True)
-    a = ap.parse_args()
-    rows = json.load(open(a.trades))
-    rows = [r for r in rows if r["rr"] > 0]
+def analyse(rows):
     current = [r for r in rows if r["rr"] >= 1.5 and r["tech"] >= 60]
     train = [r for r in rows if r["t"] < SPLIT]
     test = [r for r in rows if r["t"] >= SPLIT]
@@ -64,25 +58,42 @@ def main():
                          "test": stats([r for r in test if f(r)])})
     ok = [g for g in grid if g["train"].get("trades", 0) >= 100]
     best = max(ok, key=lambda g: g["train"]["avgR"]) if ok else None
-    out = {
-        "period": {"from": min(r["t"] for r in rows) if rows else None, "to": max(r["t"] for r in rows) if rows else None, "split": SPLIT},
+    validity = {}
+    for vh in ("6", "12", "24"):
+        rv = [dict(r, traded=r["byValidity"][vh]["traded"], R=r["byValidity"][vh]["R"]) for r in current if "byValidity" in r]
+        validity[vh + " h"] = {"all": stats(rv), "test": stats([r for r in rv if r["t"] >= SPLIT])}
+    return {
         "all": stats(rows),
         "currentRules": {"rule": "RR >= 1,5 et score technique >= 60 (sans fondamental)", "all": stats(current),
                           "train": stats([r for r in current if r["t"] < SPLIT]), "test": stats([r for r in current if r["t"] >= SPLIT]),
                           "bySetup": group(current, lambda r: r["setup"]), "bySession": group(current, lambda r: r["session"]),
                           "byPair": group(current, lambda r: r["pair"]), "byYear": group(current, lambda r: r["t"][:4]),
                           "byOrder": group(current, lambda r: r["order"]), "byHour": group(current, lambda r: r["hourParis"])},
+        "validity": validity,
         "bySetup": group(rows, lambda r: r["setup"]),
         "byRR": group(rows, lambda r: bucket(r["rr"], [0, 1, 1.5, 2, 3, 5])),
         "byTech": group(rows, lambda r: bucket(r["tech"], [0, 50, 60, 70, 80, 90])),
         "grid": grid,
         "bestOnTrain": best,
     }
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--trades", required=True)
+    ap.add_argument("--out", required=True)
+    a = ap.parse_args()
+    rows = [r for r in json.load(open(a.trades)) if r["rr"] > 0]
+    variants = sorted({r.get("variant", "base") for r in rows})
+    out = {"period": {"from": min(r["t"] for r in rows) if rows else None, "to": max(r["t"] for r in rows) if rows else None,
+                      "split": SPLIT}, "variants": {}}
+    for v in variants:
+        out["variants"][v] = analyse([r for r in rows if r.get("variant", "base") == v])
+        c = out["variants"][v]["currentRules"]; b = out["variants"][v]["bestOnTrain"]
+        print(v, "| règles actuelles :", json.dumps(c["all"]), "| contrôle :", json.dumps(c["test"]))
+        if b:
+            print("   meilleur réglage :", b["rrMin"], b["techMin"], "train", json.dumps(b["train"]), "-> contrôle", json.dumps(b["test"]))
     json.dump(out, open(a.out, "w"), indent=1, ensure_ascii=False)
-    c = out["currentRules"]
-    print("règles actuelles :", json.dumps(c["all"], ensure_ascii=False))
-    if best:
-        print("meilleur réglage (apprentissage) :", best["rrMin"], best["techMin"], json.dumps(best["train"]), "-> contrôle", json.dumps(best["test"]))
 
 
 if __name__ == "__main__":

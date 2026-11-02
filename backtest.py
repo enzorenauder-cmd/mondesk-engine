@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Mon Desk : backtest de la méthode technique (engine.py) sur l'historique.
 
-Rejoue le moteur à chaque passage du Radar (lun-ven, 8 h 15 à 18 h 15 heure de Paris), sur les 29 paires,
+Rejoue le moteur à chaque passage du Radar (lun-ven, 8 h 15 à 20 h 15 heure de Paris), pour chaque variante de méthode, sur les 29 paires,
 avec seulement les bougies déjà CLÔTURÉES à ce moment-là (aucune information du futur), puis suit chaque
 signal bougie par bougie (entrée touchée ou non, TP, SL, expiration) avec la même fonction que le Radar.
 
@@ -18,8 +18,16 @@ import engine
 UTC = timezone.utc
 PARIS = ZoneInfo("Europe/Paris")
 VALID_H = 6          # validité d'un signal (validityH du Radar)
+VALIDITIES = (6, 12, 24)  # durées de validité comparées
 MAX_HOLD_D = 10      # au-delà, un trade encore ouvert est clôturé au prix du moment
-CFG = {"rrMin": 1.0}  # on garde tout à partir de RR 1 ; les seuils se testent après coup
+# variantes comparées (rrMin 1 : on garde tout, les seuils se testent après coup)
+VARIANTS = {
+    "base": {"rrMin": 1.0},                                    # méthode actuelle
+    "tp2": {"rrMin": 1.0, "tpMode": "second"},                 # TP sur la deuxième cible
+    "tprr": {"rrMin": 1.5, "tpMode": "rrmin"},                 # TP sur la première cible qui donne RR >= 1,5
+    "pullback": {"rrMin": 1.0, "allowH4Pullback": True},       # D1 en tendance + H4 en correction autorisé
+}
+CFG = VARIANTS["base"]
 
 
 def load(hist, pair, interval):
@@ -39,7 +47,7 @@ def slots(start, end):
     d = start.astimezone(PARIS).date()
     while d <= end.astimezone(PARIS).date():
         if d.weekday() < 5:
-            for h in range(8, 19):
+            for h in range(8, 21):
                 t = datetime(d.year, d.month, d.day, h, 15, tzinfo=PARIS).astimezone(UTC)
                 if start <= t <= end:
                     yield t
@@ -48,7 +56,7 @@ def slots(start, end):
 
 def session_of(t):
     h = t.astimezone(PARIS).hour
-    return "Londres (8-12 h)" if h < 13 else ("New York (13-16 h)" if h < 17 else "Fin de journée (17-18 h)")
+    return "Londres (8-12 h)" if h < 13 else ("New York (13-16 h)" if h < 17 else ("Fin de journée (17-18 h)" if h < 19 else "Soir (19-20 h)"))
 
 
 def run_pair(pair, hist, start_from=None):
@@ -76,38 +84,53 @@ def run_pair(pair, hist, start_from=None):
         if ts - m15t[i15 - 1] > 3 * 3600:
             continue
         analyses += 1
-        r = engine.analyse_pair(pair, d1[max(0, i1 - 120):i1], h4[max(0, i4 - 150):i4], m15[i15 - 200:i15], CFG, T)
-        for c in r.get("cands", []):
-            key = (pair, c["dir"])
-            if active_until.get(key, 0) > ts:   # un signal déjà actif sur cette paire et ce sens
-                continue
-            item = {"pair": pair, "dir": c["dir"], "entry": c["entry"], "sl": c["sl"], "tp": c["tp"],
-                    "invalidation": c["invalidation"], "createdAt": engine.iso(T),
-                    "validUntil": engine.iso(T + timedelta(hours=VALID_H))}
-            j_end = bisect.bisect_right(m15t, ts + MAX_HOLD_D * 86400)
-            fut = m15[i15:j_end]
-            ev = engine.evaluate(item, fut, engine.parse_t(fut[-1]["t"]) if fut else T)
-            st = ev.get("status")
-            risk = abs(float(c["entry"]) - float(c["sl"]))
-            cost = engine.spread(pair) / risk if risk else 0
-            if st in ("tp", "sl"):
-                R = ev["resultR"] - cost
-                closed = ev["closedAt"]
-            elif st == "in_zone":   # encore ouvert au bout de 10 jours : clôture au prix du moment
-                st, R, closed = "timeout", (ev.get("currentR") or 0) - cost, fut[-1]["t"] if fut else None
-            else:                    # jamais déclenché (expiré / invalidé) : 0 R, pas un trade
-                R, closed = 0.0, None
-            traded = st in ("tp", "sl", "timeout")
-            out.append({"pair": pair, "dir": c["dir"], "setup": c["setup"][:2], "order": "limite" if c["orderType"].endswith("Limit") else "marché",
-                        "t": engine.iso(T), "hourParis": T.astimezone(PARIS).hour, "session": session_of(T),
-                        "rr": c["rr"], "tech": c["techScore"], "status": st, "traded": traded,
-                        "R": round(R, 3) if traded else 0.0, "missedRight": bool(ev.get("missedRight")),
-                        "closedAt": closed})
-            if traded and closed:
-                active_until[key] = int(engine.parse_t(closed).timestamp())
-            else:
-                active_until[key] = ts + VALID_H * 3600
+        j_end = bisect.bisect_right(m15t, ts + MAX_HOLD_D * 86400)
+        fut = m15[i15:j_end]
+        if not fut:
+            continue
+        fut_end = engine.parse_t(fut[-1]["t"])
+        sl_d1, sl_h4, sl_15 = d1[max(0, i1 - 120):i1], h4[max(0, i4 - 150):i4], m15[i15 - 200:i15]
+        for vname, cfg in VARIANTS.items():
+            r = engine.analyse_pair(pair, sl_d1, sl_h4, sl_15, cfg, T)
+            for c in r.get("cands", []):
+                key = (vname, pair, c["dir"])
+                if active_until.get(key, 0) > ts:   # un signal déjà actif sur cette paire et ce sens
+                    continue
+                risk = abs(float(c["entry"]) - float(c["sl"]))
+                cost = engine.spread(pair) / risk if risk else 0
+                res = {}
+                for vh in VALIDITIES:
+                    item = {"pair": pair, "dir": c["dir"], "entry": c["entry"], "sl": c["sl"], "tp": c["tp"],
+                            "invalidation": c["invalidation"], "createdAt": engine.iso(T),
+                            "validUntil": engine.iso(T + timedelta(hours=vh))}
+                    ev = engine.evaluate(item, fut, fut_end)
+                    st = ev.get("status")
+                    if st in ("tp", "sl"):
+                        R, closed = ev["resultR"] - cost, ev["closedAt"]
+                    elif st == "in_zone":   # encore ouvert au bout de 10 jours : clôture au prix du moment
+                        st, R, closed = "timeout", (ev.get("currentR") or 0) - cost, fut[-1]["t"]
+                    else:                    # jamais déclenché (expiré / invalidé) : 0 R, pas un trade
+                        R, closed = 0.0, None
+                    res[vh] = (st, round(R, 3), closed, bool(ev.get("missedRight")))
+                st, R, closed, missed = res[VALID_H]
+                traded = st in ("tp", "sl", "timeout")
+                out.append({"variant": vname, "pair": pair, "dir": c["dir"], "setup": c["setup"][:2],
+                            "order": "limite" if c["orderType"].endswith("Limit") else "marché",
+                            "t": engine.iso(T), "hourParis": T.astimezone(PARIS).hour, "session": session_of(T),
+                            "rr": c["rr"], "tech": c["techScore"], "status": st, "traded": traded,
+                            "R": R if traded else 0.0, "missedRight": missed, "closedAt": closed,
+                            "byValidity": {str(vh): {"status": v[0], "traded": v[0] in ("tp", "sl", "timeout"),
+                                                     "R": v[1] if v[0] in ("tp", "sl", "timeout") else 0.0}
+                                           for vh, v in res.items()}})
+                if traded and closed:
+                    active_until[key] = int(engine.parse_t(closed).timestamp())
+                else:
+                    active_until[key] = ts + VALID_H * 3600
     return out, {"pair": pair, "analyses": analyses, "signals": len(out), "from": engine.iso(start), "to": engine.iso(end)}
+
+
+def _job(args):
+    return run_pair(*args)
 
 
 def main():
@@ -121,10 +144,11 @@ def main():
     pairs = a.pairs.split(",") if a.pairs else [f.split("_")[0] for f in os.listdir(a.hist) if f.endswith("_15min.json.gz") or f.endswith("_15min.json")]
     frm = datetime.strptime(a.frm, "%Y-%m-%d").replace(tzinfo=UTC) if a.frm else None
     allrows, meta = [], []
-    for p in sorted(set(pairs)):
-        rows, m = run_pair(p, a.hist, frm)
-        allrows += rows; meta.append(m)
-        print(json.dumps(m, ensure_ascii=False), flush=True)
+    from multiprocessing import Pool
+    with Pool(os.cpu_count() or 2) as pool:
+        for rows, m in pool.imap_unordered(_job, [(p, a.hist, frm) for p in sorted(set(pairs))]):
+            allrows += rows; meta.append(m)
+            print(json.dumps(m, ensure_ascii=False), flush=True)
     json.dump(allrows, open(os.path.join(a.out, "trades.json"), "w"), separators=(",", ":"))
     json.dump(meta, open(os.path.join(a.out, "meta.json"), "w"), indent=1, ensure_ascii=False)
     print(f"{len(allrows)} signaux, {sum(r['traded'] for r in allrows)} trades déclenchés")
