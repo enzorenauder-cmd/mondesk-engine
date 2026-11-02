@@ -1,0 +1,39 @@
+name: Donnees Twelve Data
+on:
+  schedule:
+    # Heure UTC : 6 h 45 à 16 h 45 UTC = 7 h 45 à 17 h 45 Paris (hiver), 30 min avant chaque passage du Radar ; lundi-vendredi
+    - cron: "45 6-16 * * 1-5"
+  workflow_dispatch: {}
+concurrency:
+  group: data
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recupere les donnees precedentes (branche data)
+        run: |
+          git fetch origin data --depth=1 || true
+          mkdir -p data
+          git show origin/data:data.tar.gz > prev.tar.gz 2>/dev/null && tar xzf prev.tar.gz || true
+      - name: Bougies Twelve Data
+        env:
+          TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
+        run: python3 fetch_data.py
+      - name: Publie sur la branche data (un seul commit, ecrase)
+        run: |
+          tar czf /tmp/data.tar.gz data
+          cp data/meta.json /tmp/meta.json
+          git config user.name "mondesk-bot"
+          git config user.email "mondesk-bot@users.noreply.github.com"
+          git checkout --orphan data-new
+          git rm -rf . -q
+          cp /tmp/data.tar.gz data.tar.gz
+          cp /tmp/meta.json meta.json
+          git add data.tar.gz meta.json
+          git commit -q -m "donnees $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f origin data-new:data
