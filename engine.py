@@ -577,6 +577,9 @@ def evaluate(item, m15, now):
                 out["status"] = "invalidated"; return out
             if (b["l"] <= e) if up else (b["h"] >= e):
                 triggered = True; entered_i = i; out["triggered"] = True; out["triggeredAt"] = b["t"]; out["status"] = "in_zone"
+            elif (b["h"] >= tp) if up else (b["l"] <= tp):
+                # objectif atteint sans passer par l'entrée : setup terminé, l'ordre limite est à annuler
+                out["status"] = "missed"; out["missedRight"] = True; out["missedAt"] = b["t"]; return out
             else:
                 continue
         hit_sl = (b["l"] <= sl) if up else (b["h"] >= sl)
