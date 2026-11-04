@@ -76,7 +76,7 @@ def rba_2y():
     t = get("https://www.rba.gov.au/statistics/tables/csv/f2-data.csv")
     rows = list(csv.reader(io.StringIO(t)))
     head = next(r for r in rows if r and r[0].strip().lower() == "title")
-    col = next(i for i, h in enumerate(head) if "2 year" in h.lower() and "commonwealth" in h.lower())
+    col = next(i for i, h in enumerate(head) if "2 year" in h.lower() or "2-year" in h.lower())
     out = []
     for r in rows:
         if r and re.match(r"\d{2}-[A-Za-z]{3}-\d{4}", r[0].strip()):
