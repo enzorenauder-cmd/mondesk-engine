@@ -36,6 +36,11 @@ VARIANTS = {
     "confirm_tp2": {"rrMin": 1.0, "entryMode": "confirm", "tpMode": "second"},
     "confirm_tprr2": {"rrMin": 2.0, "entryMode": "confirm", "tpMode": "rrmin"},
     "confirm_tprr3": {"rrMin": 3.0, "entryMode": "confirm", "tpMode": "rrmin"},
+    # série 4 : horizon plus long (tendance D1 + H4, setups cherchés en H1 au lieu de M15, validité 24 h)
+    "h1_base": {"rrMin": 1.0, "tf": "1h", "validH": 24},
+    "h1_limit": {"rrMin": 1.0, "tf": "1h", "validH": 24, "entryMode": "limit"},
+    "h1_confirm": {"rrMin": 1.0, "tf": "1h", "validH": 24, "entryMode": "confirm"},
+    "h1_confirm_tp2": {"rrMin": 1.0, "tf": "1h", "validH": 24, "entryMode": "confirm", "tpMode": "second"},
 }
 CFG = VARIANTS["base"]
 
@@ -73,6 +78,7 @@ def run_pair(pair, hist, start_from=None):
     d1, d1t = load(hist, pair, "1day")
     h4, h4t = load(hist, pair, "4h")
     m15, m15t = load(hist, pair, "15min")
+    h1, h1t = load(hist, pair, "1h")
     if len(m15) < 300 or len(d1) < 60 or len(h4) < 100:
         return [], {"pair": pair, "error": "historique insuffisant"}
     start = engine.parse_t(m15[250]["t"])
@@ -100,8 +106,16 @@ def run_pair(pair, hist, start_from=None):
             continue
         fut_end = engine.parse_t(fut[-1]["t"])
         sl_d1, sl_h4, sl_15 = d1[max(0, i1 - 120):i1], h4[max(0, i4 - 150):i4], m15[i15 - 200:i15]
+        ih = bisect.bisect_right(h1t, ts - 3600) if h1t else 0
+        sl_h1 = h1[ih - 200:ih] if ih >= 200 and ts - h1t[ih - 1] <= 3 * 3600 else None
         for vname, cfg in VARIANTS.items():
-            r = engine.analyse_pair(pair, sl_d1, sl_h4, sl_15, cfg, T)
+            if cfg.get("tf") == "1h":
+                if sl_h1 is None:
+                    continue
+                r = engine.analyse_pair(pair, sl_d1, sl_h4, sl_h1, cfg, T)
+            else:
+                r = engine.analyse_pair(pair, sl_d1, sl_h4, sl_15, cfg, T)
+            vmain = cfg.get("validH", VALID_H)
             for c in r.get("cands", []):
                 key = (vname, pair, c["dir"])
                 if active_until.get(key, 0) > ts:   # un signal déjà actif sur cette paire et ce sens
@@ -109,7 +123,7 @@ def run_pair(pair, hist, start_from=None):
                 risk = abs(float(c["entry"]) - float(c["sl"]))
                 cost = engine.spread(pair) / risk if risk else 0
                 res = {}
-                for vh in VALIDITIES:
+                for vh in sorted(set(VALIDITIES) | {vmain}):
                     item = {"pair": pair, "dir": c["dir"], "entry": c["entry"], "sl": c["sl"], "tp": c["tp"],
                             "invalidation": c["invalidation"], "createdAt": engine.iso(T),
                             "validUntil": engine.iso(T + timedelta(hours=vh)), "confirmEntry": c.get("confirmEntry", False)}
@@ -127,7 +141,7 @@ def run_pair(pair, hist, start_from=None):
                     else:                    # jamais déclenché (expiré / invalidé) : 0 R, pas un trade
                         R, closed = 0.0, None
                     res[vh] = (st, round(R, 3), closed, bool(ev.get("missedRight")))
-                st, R, closed, missed = res[VALID_H]
+                st, R, closed, missed = res[vmain]
                 traded = st in ("tp", "sl", "timeout")
                 out.append({"variant": vname, "pair": pair, "dir": c["dir"], "setup": c["setup"][:2],
                             "order": "limite" if c["orderType"].endswith("Limit") else "marché",
@@ -140,7 +154,7 @@ def run_pair(pair, hist, start_from=None):
                 if traded and closed:
                     active_until[key] = int(engine.parse_t(closed).timestamp())
                 else:
-                    active_until[key] = ts + VALID_H * 3600
+                    active_until[key] = ts + vmain * 3600
     return out, {"pair": pair, "analyses": analyses, "signals": len(out), "from": engine.iso(start), "to": engine.iso(end)}
 
 
