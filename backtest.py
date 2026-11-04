@@ -28,6 +28,10 @@ VARIANTS = {
     "pullback": {"rrMin": 1.0, "allowH4Pullback": True},       # D1 en tendance + H4 en correction autorisé
     "sltight": {"rrMin": 1.0, "slBufferATR": 0.03},            # stop plus serré (marge 3 % de l'ATR D1 au lieu de 10 %)
     "sltight_tprr": {"rrMin": 1.5, "slBufferATR": 0.03, "tpMode": "rrmin"},  # stop serré + TP sur la première cible à RR >= 1,5
+    # série 2 : façon d'entrer
+    "limit": {"rrMin": 1.0, "entryMode": "limit"},             # uniquement des ordres limites au retour, jamais au marché
+    "confirm": {"rrMin": 1.0, "entryMode": "confirm"},         # retour sur l'entrée puis entrée à la clôture d'une bougie M15 de rejet
+    "breakout": {"rrMin": 1.0, "entryMode": "breakout"},       # entrée au marché juste après la cassure (moins d'1 h)
 }
 CFG = VARIANTS["base"]
 
@@ -104,8 +108,13 @@ def run_pair(pair, hist, start_from=None):
                 for vh in VALIDITIES:
                     item = {"pair": pair, "dir": c["dir"], "entry": c["entry"], "sl": c["sl"], "tp": c["tp"],
                             "invalidation": c["invalidation"], "createdAt": engine.iso(T),
-                            "validUntil": engine.iso(T + timedelta(hours=vh))}
+                            "validUntil": engine.iso(T + timedelta(hours=vh)), "confirmEntry": c.get("confirmEntry", False)}
                     ev = engine.evaluate(item, fut, fut_end)
+                    if ev.get("entryPrice") is not None:   # entrée à la clôture de la bougie de rejet : risque réel
+                        r2 = abs(float(ev["entryPrice"]) - float(c["sl"]))
+                        cost = engine.spread(pair) / r2 if r2 else 0
+                    else:
+                        cost = engine.spread(pair) / risk if risk else 0
                     st = ev.get("status")
                     if st in ("tp", "sl"):
                         R, closed = ev["resultR"] - cost, ev["closedAt"]
@@ -141,7 +150,11 @@ def main():
     ap.add_argument("--out", default="results")
     ap.add_argument("--pairs")
     ap.add_argument("--from", dest="frm")
+    ap.add_argument("--variants", help="liste de variantes (par défaut : toutes)")
     a = ap.parse_args()
+    if a.variants:
+        global VARIANTS
+        VARIANTS = {k: VARIANTS[k] for k in a.variants.split(",")}
     os.makedirs(a.out, exist_ok=True)
     pairs = a.pairs.split(",") if a.pairs else [f.split("_")[0] for f in os.listdir(a.hist) if f.endswith("_15min.json.gz") or f.endswith("_15min.json")]
     frm = datetime.strptime(a.frm, "%Y-%m-%d").replace(tzinfo=UTC) if a.frm else None

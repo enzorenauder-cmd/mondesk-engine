@@ -300,7 +300,29 @@ def analyse_pair(pair, d1, h4, m15, cfg, now):
         conf_age_h = (t_now - parse_t(m15[conf_i]["t"])).total_seconds() / 3600
         if (price - sl) * sgn <= 0:
             rejected.append({"pair": pair, "setup": setup, "reason": "prix déjà au-delà de l'invalidation"}); return
-        if (price - entry) * sgn <= 0:
+        mode = cfg.get("entryMode", "default")
+        extra = {}
+        if mode == "breakout":
+            # entrée au marché juste après la cassure (confirmation de moins d'une heure), sans attendre de retour
+            if conf_age_h > 1:
+                rejected.append({"pair": pair, "setup": setup, "reason": "cassure de plus d'une heure"}); return
+            if (tp - price) * sgn <= 0:
+                rejected.append({"pair": pair, "setup": setup, "reason": "objectif déjà atteint"}); return
+            order = "Achat au marché" if up else "Vente au marché"
+            entry = price
+            risk = abs(entry - sl); rr = (abs(tp - entry) - sp) / (risk + sp)
+            if sp > 0.25 * risk:
+                rejected.append({"pair": pair, "setup": setup, "reason": "prix trop près du stop (spread > 25 %)"}); return
+        elif mode in ("limit", "confirm"):
+            # uniquement des ordres limites au retour (jamais d'entrée au marché)
+            if (price - entry) * sgn <= 0:
+                rejected.append({"pair": pair, "setup": setup, "reason": "prix déjà sur l'entrée"}); return
+            if path_done >= 1:
+                rejected.append({"pair": pair, "setup": setup, "reason": "objectif déjà atteint"}); return
+            order = "Buy Limit" if up else "Sell Limit"
+            if mode == "confirm":
+                extra["confirmEntry"] = True   # entrée à la clôture d'une bougie M15 de rejet après le retour
+        elif (price - entry) * sgn <= 0:
             # le prix est déjà revenu sur (ou au-delà de) l'entrée : un ordre limite serait refusé par MT5
             if conf_age_h < 2:
                 order = "Achat au marché" if up else "Vente au marché"
@@ -337,7 +359,7 @@ def analyse_pair(pair, d1, h4, m15, cfg, now):
                           "confirmation": note, "targets": f"TP {rnd(pair, tp)} (première cible logique)"},
             "trigger": {"price": rnd(pair, entry), "text": "confirmation M15 faite"},
             "path": [{"price": rnd(pair, entry), "label": "Retour sur l'entrée" if order.endswith("Limit") else "Entrée au marché"},
-                     {"price": rnd(pair, tp), "label": "Objectif"}]})
+                     {"price": rnd(pair, tp), "label": "Objectif"}], **extra})
 
     # --- S1 rejet de zone : touche de zone H4 puis clôture au-delà du swing interne
     for z in zones[:3]:
@@ -566,7 +588,30 @@ def evaluate(item, m15, now):
     out = {"lastPrice": rnd(item["pair"], m15[-1]["c"]) if m15 else None, "lastPriceAt": m15[-1]["t"] if m15 else None}
     triggered = bool(item.get("triggered"))
     entered_i = None
+    confirm = bool(item.get("confirmEntry")) and not triggered
+    touched = False
     for i, b in enumerate(bars):
+        if confirm and not triggered:
+            # variante : le prix revient sur l'entrée, puis on entre à la clôture d'une bougie M15 de rejet
+            if vu and parse_t(b["t"]) > vu:
+                out["status"] = "expired"; return out
+            if not touched:
+                if (b["l"] <= e) if up else (b["h"] >= e):
+                    touched = True
+                elif (b["h"] >= tp) if up else (b["l"] <= tp):
+                    out["status"] = "missed"; out["missedRight"] = True; out["missedAt"] = b["t"]; return out
+                else:
+                    continue
+            if (b["l"] <= sl) if up else (b["h"] >= sl):
+                out["status"] = "invalidated"; out["note"] = "SL touché avant la bougie de rejet"; return out
+            rejet = (b["c"] > b["o"] and b["c"] >= e) if up else (b["c"] < b["o"] and b["c"] <= e)
+            if rejet:
+                if (b["c"] >= tp) if up else (b["c"] <= tp):
+                    out["status"] = "missed"; return out
+                e, sl0 = b["c"], sl
+                triggered = True; entered_i = i; out["triggered"] = True; out["triggeredAt"] = b["t"]
+                out["status"] = "in_zone"; out["entryPrice"] = rnd(item["pair"], e)
+            continue
         if not triggered:
             if vu and parse_t(b["t"]) > vu:
                 out["status"] = "expired"

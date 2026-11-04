@@ -1,0 +1,36 @@
+name: Backtest variantes
+on:
+  workflow_dispatch:
+    inputs:
+      variants:
+        description: "Variantes a tester (separees par des virgules)"
+        default: "base,limit,confirm,breakout"
+      tag:
+        description: "Nom de la serie (branche results-<tag>)"
+        default: "entrees"
+permissions:
+  contents: write
+jobs:
+  bt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recupere l'historique (branche hist)
+        run: |
+          mkdir -p /tmp/h && git fetch origin hist --depth=1 && git archive origin/hist hist | tar x -C /tmp/h
+      - name: Backtest
+        run: |
+          python3 backtest.py --hist /tmp/h/hist --out /tmp/results --variants "${{ github.event.inputs.variants }}"
+          python3 summarize.py --trades /tmp/results/trades.json --out /tmp/results/summary.json
+      - name: Publie les resultats
+        run: |
+          git config user.name "mondesk-bot"
+          git config user.email "mondesk-bot@users.noreply.github.com"
+          git checkout -q --orphan res-new
+          git rm -rf . -q
+          cp /tmp/results/* .
+          gzip -9 trades.json
+          git add .
+          git commit -q -m "backtest ${{ github.event.inputs.tag }} $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f -q origin res-new:results-${{ github.event.inputs.tag }}
