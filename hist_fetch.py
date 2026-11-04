@@ -15,7 +15,7 @@ PAIRS = ["EURGBP","EURAUD","EURNZD","EURUSD","EURCAD","EURCHF","EURJPY","GBPAUD"
          "GBPCAD","GBPCHF","GBPJPY","AUDNZD","AUDUSD","AUDCAD","AUDCHF","AUDJPY","NZDUSD","NZDCAD",
          "NZDCHF","NZDJPY","USDCAD","USDCHF","USDJPY","CADCHF","CADJPY","CHFJPY","XAUUSD"]
 # unité -> (début, taille de fenêtre en jours) ; échauffement avant 2023 pour D1 et H4
-PLAN = {"1day": ("2022-06-01", 1600), "4h": ("2022-11-01", 700), "15min": ("2023-01-01", 72)}
+PLAN = {"1day": ("2022-06-01", 1600), "4h": ("2022-11-01", 700), "15min": ("2023-01-01", 72), "1h": ("2022-09-01", 280)}
 OUT = "hist"
 _last = [0.0]
 
