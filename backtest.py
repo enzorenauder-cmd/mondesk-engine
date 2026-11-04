@@ -32,6 +32,10 @@ VARIANTS = {
     "limit": {"rrMin": 1.0, "entryMode": "limit"},             # uniquement des ordres limites au retour, jamais au marché
     "confirm": {"rrMin": 1.0, "entryMode": "confirm"},         # retour sur l'entrée puis entrée à la clôture d'une bougie M15 de rejet
     "breakout": {"rrMin": 1.0, "entryMode": "breakout"},       # entrée au marché juste après la cassure (moins d'1 h)
+    # série 3 : bougie de rejet + TP plus loin (l'entrée à la clôture réduit le RR réel)
+    "confirm_tp2": {"rrMin": 1.0, "entryMode": "confirm", "tpMode": "second"},
+    "confirm_tprr2": {"rrMin": 2.0, "entryMode": "confirm", "tpMode": "rrmin"},
+    "confirm_tprr3": {"rrMin": 3.0, "entryMode": "confirm", "tpMode": "rrmin"},
 }
 CFG = VARIANTS["base"]
 
