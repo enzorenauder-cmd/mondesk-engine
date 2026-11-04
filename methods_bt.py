@@ -15,7 +15,7 @@ from multiprocessing import Pool
 import engine
 
 UTC = timezone.utc
-START = datetime(2023, 3, 15, tzinfo=UTC)   # 9 mois de D1 avant pour les moyennes
+START = datetime.strptime(os.environ.get("BT_START", "2023-03-15"), "%Y-%m-%d").replace(tzinfo=UTC)  # 9 mois de D1 avant pour les moyennes
 SPLIT = "2025-07-01"
 CCY = ["EUR", "GBP", "USD", "JPY", "CHF", "CAD", "AUD", "NZD"]
 
