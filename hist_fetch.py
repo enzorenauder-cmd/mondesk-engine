@@ -16,6 +16,8 @@ PAIRS = ["EURGBP","EURAUD","EURNZD","EURUSD","EURCAD","EURCHF","EURJPY","GBPAUD"
          "NZDCHF","NZDJPY","USDCAD","USDCHF","USDJPY","CADCHF","CADJPY","CHFJPY","XAUUSD"]
 # unité -> (début, taille de fenêtre en jours) ; échauffement avant 2023 pour D1 et H4
 PLAN = {"1day": ("2022-06-01", 1600), "4h": ("2022-11-01", 700), "15min": ("2023-01-01", 72), "1h": ("2022-09-01", 280)}
+# remontée dans le temps (ajoutée le 04/11/2026) : début de l'historique intraday Twelve Data = fin janvier 2020
+BACK = {"1day": "2019-01-01", "4h": "2019-06-01", "1h": "2019-10-01", "15min": "2020-02-01"}
 OUT = "hist"
 _last = [0.0]
 
@@ -73,6 +75,48 @@ def main():
     print(f"crédits utilisés aujourd'hui : {used0}, budget de ce passage : {max(budget, 0)}")
     end_all = datetime.now(UTC).replace(minute=0, second=0, microsecond=0)
     spent = 0
+    # 1) remontée dans le temps : de BACK jusqu'au début de ce qui est déjà téléchargé
+    for interval, back_s in BACK.items():
+        win = PLAN[interval][1]
+        for p in PAIRS:
+            if spent >= budget:
+                break
+            k = f"{p}_{interval}"
+            path = os.path.join(OUT, k + ".json.gz")
+            rows = json.load(gzip.open(path)) if os.path.exists(path) else []
+            if not rows:
+                continue
+            first = engine.parse_t(rows[0]["t"]) if not prog.get(k + "_backTo") else engine.parse_t(prog[k + "_backTo"])
+            target = datetime.strptime(back_s, "%Y-%m-%d").replace(tzinfo=UTC)
+            if prog.get(k + "_backDone") or first <= target + timedelta(days=3):
+                prog[k + "_backDone"] = True
+                continue
+            cur_end = first
+            added = []
+            while cur_end > target + timedelta(days=1) and spent < budget:
+                st = max(target, cur_end - timedelta(days=win))
+                try:
+                    part = get(p, interval, st, cur_end, key)
+                except Exception as e:
+                    print(k, "remontée", st, "erreur :", e, file=sys.stderr)
+                    if "credits" in str(e).lower():
+                        budget = spent
+                    break
+                spent += 1
+                added += part
+                cur_end = st
+                prog[k + "_backTo"] = engine.iso(cur_end)
+                if not part:   # plus de données disponibles avant
+                    break
+            if cur_end <= target + timedelta(days=1) or (added == [] and prog.get(k + "_backTo")):
+                prog[k + "_backDone"] = True
+            seen = {r["t"] for r in rows}
+            rows = sorted([r for r in added if r["t"] not in seen] + rows, key=lambda r: r["t"])
+            with gzip.open(path, "wt") as f:
+                json.dump(rows, f, separators=(",", ":"))
+            json.dump(prog, open(prog_p, "w"), indent=0)
+    print(f"remontée : {spent} requêtes ; séries remontées : {sum(1 for p in PAIRS for i in BACK if prog.get(f'{p}_{i}_backDone'))}/{len(PAIRS) * len(BACK)}")
+    prog["_backComplete"] = all(prog.get(f"{p}_{i}_backDone") for p in PAIRS for i in BACK)
     for interval, (start_s, win) in PLAN.items():
         for p in PAIRS:
             k = f"{p}_{interval}"
