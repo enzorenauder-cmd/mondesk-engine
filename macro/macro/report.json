@@ -1,0 +1,84 @@
+{
+ "Y2_USD": {
+  "ok": true,
+  "n": 2209,
+  "from": "2018-01-02",
+  "to": "2026-11-02",
+  "src": "FRED DGS2"
+ },
+ "Y2_EUR": {
+  "ok": true,
+  "n": 2255,
+  "from": "2018-01-02",
+  "to": "2026-11-03",
+  "src": "BCE courbe AAA 2 ans"
+ },
+ "Y2_GBP": {
+  "ok": true,
+  "n": 2233,
+  "from": "2018-01-02",
+  "to": "2026-11-02",
+  "src": "BoE IUDSNZC"
+ },
+ "Y2_CAD": {
+  "ok": true,
+  "n": 2204,
+  "from": "2018-01-02",
+  "to": "2026-11-02",
+  "src": "Banque du Canada 2 ans"
+ },
+ "Y2_AUD": {
+  "ok": true,
+  "n": 2224,
+  "from": "2018-01-02",
+  "to": "2026-10-28",
+  "src": "RBA F2"
+ },
+ "Y2_NZD_errors": [
+  "RBNZ B2: HTTP Error 403: Forbidden"
+ ],
+ "Y2_NZD": {
+  "ok": true,
+  "n": 105,
+  "from": "2018-01-01",
+  "to": "2026-09-01",
+  "src": "OCDE 3 mois (mensuel)"
+ },
+ "Y2_CHF": {
+  "ok": true,
+  "n": 1904,
+  "from": "2018-01-03",
+  "to": "2025-07-31",
+  "src": "BNS rendoblid"
+ },
+ "Y2_JPY": {
+  "ok": true,
+  "n": 2154,
+  "from": "2018-01-04",
+  "to": "2026-11-02",
+  "src": "Ministère des Finances japonais"
+ },
+ "VIX": {
+  "ok": true,
+  "n": 2254,
+  "from": "2018-01-02",
+  "to": "2026-11-02",
+  "src": "FRED VIXCLS"
+ },
+ "COT": {
+  "ok": true,
+  "n": 3264,
+  "ccys": [
+   "AUD",
+   "CAD",
+   "CHF",
+   "EUR",
+   "GBP",
+   "JPY",
+   "NZD",
+   "USD"
+  ],
+  "from": "2019-01-08",
+  "to": "2026-10-27"
+ }
+}
