@@ -1,0 +1,27 @@
+name: Donnees macro
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  macro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Telecharge les donnees macro
+        run: |
+          pip install -q openpyxl
+          python3 macro_fetch.py
+          cat macro/report.json
+      - name: Publie sur la branche macro
+        run: |
+          cp -r macro /tmp/macro
+          git config user.name "mondesk-bot"
+          git config user.email "mondesk-bot@users.noreply.github.com"
+          git checkout -q --orphan macro-new
+          git rm -rf . -q
+          cp -r /tmp/macro macro
+          git add macro
+          git commit -q -m "macro $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push -f -q origin macro-new:macro
