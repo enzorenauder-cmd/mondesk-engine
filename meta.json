@@ -1,0 +1,205 @@
+[
+ {
+  "pair": "AUDCHF",
+  "analyses": 21895,
+  "signals": 2452,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "AUDNZD",
+  "analyses": 21899,
+  "signals": 2579,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T19:00:00Z"
+ },
+ {
+  "pair": "AUDCAD",
+  "analyses": 21884,
+  "signals": 2788,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "AUDJPY",
+  "analyses": 21890,
+  "signals": 2793,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "CADCHF",
+  "analyses": 21909,
+  "signals": 2253,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-04T01:00:00Z"
+ },
+ {
+  "pair": "AUDUSD",
+  "analyses": 21875,
+  "signals": 2966,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "CADJPY",
+  "analyses": 21910,
+  "signals": 2916,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-04T01:00:00Z"
+ },
+ {
+  "pair": "CHFJPY",
+  "analyses": 21914,
+  "signals": 2898,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-04T01:00:00Z"
+ },
+ {
+  "pair": "EURAUD",
+  "analyses": 21890,
+  "signals": 2794,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "EURCHF",
+  "analyses": 21891,
+  "signals": 2380,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "EURGBP",
+  "analyses": 21876,
+  "signals": 2263,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "EURCAD",
+  "analyses": 21888,
+  "signals": 2842,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "EURJPY",
+  "analyses": 21894,
+  "signals": 2891,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "EURNZD",
+  "analyses": 21885,
+  "signals": 2915,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "EURUSD",
+  "analyses": 21868,
+  "signals": 3032,
+  "from": "2020-02-05T11:15:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "GBPAUD",
+  "analyses": 21881,
+  "signals": 3122,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "GBPCAD",
+  "analyses": 21890,
+  "signals": 3109,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "GBPCHF",
+  "analyses": 21896,
+  "signals": 2840,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "GBPJPY",
+  "analyses": 21900,
+  "signals": 2833,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "GBPNZD",
+  "analyses": 21879,
+  "signals": 3014,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "NZDCHF",
+  "analyses": 21888,
+  "signals": 2327,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "GBPUSD",
+  "analyses": 21879,
+  "signals": 2895,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-02T19:00:00Z"
+ },
+ {
+  "pair": "NZDCAD",
+  "analyses": 21891,
+  "signals": 2901,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "NZDJPY",
+  "analyses": 21895,
+  "signals": 2757,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "NZDUSD",
+  "analyses": 21875,
+  "signals": 2935,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "USDCHF",
+  "analyses": 21909,
+  "signals": 2916,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T19:00:00Z"
+ },
+ {
+  "pair": "USDCAD",
+  "analyses": 21891,
+  "signals": 3170,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T01:00:00Z"
+ },
+ {
+  "pair": "USDJPY",
+  "analyses": 21905,
+  "signals": 3055,
+  "from": "2020-02-05T10:30:00Z",
+  "to": "2026-11-03T19:00:00Z"
+ },
+ {
+  "pair": "XAUUSD",
+  "analyses": 21537,
+  "signals": 3140,
+  "from": "2020-02-05T14:45:00Z",
+  "to": "2026-11-04T01:00:00Z"
+ }
+]

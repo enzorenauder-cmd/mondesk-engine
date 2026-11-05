@@ -1,0 +1,3223 @@
+{
+ "period": {
+  "from": "2020-02-17T12:15:00Z",
+  "to": "2026-11-03T14:15:00Z",
+  "split": "2025-07-01"
+ },
+ "variants": {
+  "base": {
+   "all": {
+    "signals": 41465,
+    "trades": 22706,
+    "fillRate": 0.548,
+    "winRate": 0.567,
+    "avgR": -0.077,
+    "totalR": -1758.9,
+    "profitFactor": 0.84,
+    "maxLosingStreak": 18,
+    "maxDrawdownR": -1760.8
+   },
+   "currentRules": {
+    "rule": "RR >= 1,5 et score technique >= 60 (sans fondamental)",
+    "all": {
+     "signals": 3952,
+     "trades": 2576,
+     "fillRate": 0.652,
+     "winRate": 0.273,
+     "avgR": -0.191,
+     "totalR": -491.8,
+     "profitFactor": 0.76,
+     "maxLosingStreak": 26,
+     "maxDrawdownR": -498.8
+    },
+    "train": {
+     "signals": 3297,
+     "trades": 2152,
+     "fillRate": 0.653,
+     "winRate": 0.277,
+     "avgR": -0.178,
+     "totalR": -382.1,
+     "profitFactor": 0.78,
+     "maxLosingStreak": 26,
+     "maxDrawdownR": -387.8
+    },
+    "test": {
+     "signals": 655,
+     "trades": 424,
+     "fillRate": 0.647,
+     "winRate": 0.252,
+     "avgR": -0.259,
+     "totalR": -109.7,
+     "profitFactor": 0.69,
+     "maxLosingStreak": 16,
+     "maxDrawdownR": -123.7
+    },
+    "bySetup": {
+     "S1": {
+      "signals": 539,
+      "trades": 276,
+      "fillRate": 0.512,
+      "winRate": 0.275,
+      "avgR": -0.153,
+      "totalR": -42.2,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -50.7
+     },
+     "S2": {
+      "signals": 2205,
+      "trades": 1352,
+      "fillRate": 0.613,
+      "winRate": 0.293,
+      "avgR": -0.143,
+      "totalR": -192.7,
+      "profitFactor": 0.82,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -221.1
+     },
+     "S3": {
+      "signals": 543,
+      "trades": 431,
+      "fillRate": 0.794,
+      "winRate": 0.195,
+      "avgR": -0.428,
+      "totalR": -184.4,
+      "profitFactor": 0.53,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -188.8
+     },
+     "S4": {
+      "signals": 665,
+      "trades": 517,
+      "fillRate": 0.777,
+      "winRate": 0.284,
+      "avgR": -0.14,
+      "totalR": -72.5,
+      "profitFactor": 0.82,
+      "maxLosingStreak": 24,
+      "maxDrawdownR": -101.0
+     }
+    },
+    "bySession": {
+     "Fin de journée (17-18 h)": {
+      "signals": 553,
+      "trades": 324,
+      "fillRate": 0.586,
+      "winRate": 0.336,
+      "avgR": 0.046,
+      "totalR": 15.0,
+      "profitFactor": 1.06,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -24.0
+     },
+     "Londres (8-12 h)": {
+      "signals": 1637,
+      "trades": 1091,
+      "fillRate": 0.666,
+      "winRate": 0.26,
+      "avgR": -0.238,
+      "totalR": -259.2,
+      "profitFactor": 0.71,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -264.0
+     },
+     "New York (13-16 h)": {
+      "signals": 1338,
+      "trades": 900,
+      "fillRate": 0.673,
+      "winRate": 0.264,
+      "avgR": -0.225,
+      "totalR": -202.3,
+      "profitFactor": 0.72,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -213.5
+     },
+     "Soir (19-20 h)": {
+      "signals": 424,
+      "trades": 261,
+      "fillRate": 0.616,
+      "winRate": 0.276,
+      "avgR": -0.173,
+      "totalR": -45.3,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -57.2
+     }
+    },
+    "byPair": {
+     "AUDCAD": {
+      "signals": 70,
+      "trades": 50,
+      "fillRate": 0.714,
+      "winRate": 0.24,
+      "avgR": -0.335,
+      "totalR": -16.7,
+      "profitFactor": 0.62,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -21.3
+     },
+     "AUDCHF": {
+      "signals": 74,
+      "trades": 50,
+      "fillRate": 0.676,
+      "winRate": 0.22,
+      "avgR": -0.495,
+      "totalR": -24.7,
+      "profitFactor": 0.45,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -24.7
+     },
+     "AUDJPY": {
+      "signals": 149,
+      "trades": 85,
+      "fillRate": 0.57,
+      "winRate": 0.329,
+      "avgR": -0.014,
+      "totalR": -1.2,
+      "profitFactor": 0.98,
+      "maxLosingStreak": 7,
+      "maxDrawdownR": -10.7
+     },
+     "AUDNZD": {
+      "signals": 64,
+      "trades": 39,
+      "fillRate": 0.609,
+      "winRate": 0.333,
+      "avgR": -0.041,
+      "totalR": -1.6,
+      "profitFactor": 0.95,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -13.0
+     },
+     "AUDUSD": {
+      "signals": 162,
+      "trades": 104,
+      "fillRate": 0.642,
+      "winRate": 0.327,
+      "avgR": -0.056,
+      "totalR": -5.9,
+      "profitFactor": 0.92,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -24.0
+     },
+     "CADCHF": {
+      "signals": 61,
+      "trades": 37,
+      "fillRate": 0.607,
+      "winRate": 0.189,
+      "avgR": -0.549,
+      "totalR": -20.3,
+      "profitFactor": 0.42,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -22.0
+     },
+     "CADJPY": {
+      "signals": 147,
+      "trades": 91,
+      "fillRate": 0.619,
+      "winRate": 0.33,
+      "avgR": 0.047,
+      "totalR": 4.3,
+      "profitFactor": 1.06,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -16.6
+     },
+     "CHFJPY": {
+      "signals": 134,
+      "trades": 84,
+      "fillRate": 0.627,
+      "winRate": 0.345,
+      "avgR": 0.083,
+      "totalR": 7.0,
+      "profitFactor": 1.12,
+      "maxLosingStreak": 8,
+      "maxDrawdownR": -8.9
+     },
+     "EURAUD": {
+      "signals": 142,
+      "trades": 82,
+      "fillRate": 0.577,
+      "winRate": 0.171,
+      "avgR": -0.561,
+      "totalR": -46.0,
+      "profitFactor": 0.38,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -47.3
+     },
+     "EURCAD": {
+      "signals": 94,
+      "trades": 60,
+      "fillRate": 0.638,
+      "winRate": 0.317,
+      "avgR": -0.095,
+      "totalR": -5.7,
+      "profitFactor": 0.87,
+      "maxLosingStreak": 7,
+      "maxDrawdownR": -12.6
+     },
+     "EURCHF": {
+      "signals": 55,
+      "trades": 34,
+      "fillRate": 0.618,
+      "winRate": 0.382,
+      "avgR": 0.29,
+      "totalR": 9.8,
+      "profitFactor": 1.4,
+      "maxLosingStreak": 4,
+      "maxDrawdownR": -6.1
+     },
+     "EURGBP": {
+      "signals": 65,
+      "trades": 43,
+      "fillRate": 0.662,
+      "winRate": 0.116,
+      "avgR": -0.796,
+      "totalR": -34.2,
+      "profitFactor": 0.22,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -34.2
+     },
+     "EURJPY": {
+      "signals": 148,
+      "trades": 92,
+      "fillRate": 0.622,
+      "winRate": 0.261,
+      "avgR": -0.118,
+      "totalR": -10.9,
+      "profitFactor": 0.85,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -15.9
+     },
+     "EURNZD": {
+      "signals": 167,
+      "trades": 108,
+      "fillRate": 0.647,
+      "winRate": 0.259,
+      "avgR": -0.305,
+      "totalR": -32.9,
+      "profitFactor": 0.62,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -34.2
+     },
+     "EURUSD": {
+      "signals": 163,
+      "trades": 107,
+      "fillRate": 0.656,
+      "winRate": 0.28,
+      "avgR": -0.182,
+      "totalR": -19.4,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 8,
+      "maxDrawdownR": -26.1
+     },
+     "GBPAUD": {
+      "signals": 160,
+      "trades": 95,
+      "fillRate": 0.594,
+      "winRate": 0.253,
+      "avgR": -0.301,
+      "totalR": -28.6,
+      "profitFactor": 0.63,
+      "maxLosingStreak": 8,
+      "maxDrawdownR": -28.6
+     },
+     "GBPCAD": {
+      "signals": 143,
+      "trades": 99,
+      "fillRate": 0.692,
+      "winRate": 0.232,
+      "avgR": -0.377,
+      "totalR": -37.3,
+      "profitFactor": 0.55,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -39.0
+     },
+     "GBPCHF": {
+      "signals": 120,
+      "trades": 79,
+      "fillRate": 0.658,
+      "winRate": 0.253,
+      "avgR": -0.258,
+      "totalR": -20.4,
+      "profitFactor": 0.69,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -22.1
+     },
+     "GBPJPY": {
+      "signals": 202,
+      "trades": 123,
+      "fillRate": 0.609,
+      "winRate": 0.252,
+      "avgR": -0.198,
+      "totalR": -24.3,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -34.3
+     },
+     "GBPNZD": {
+      "signals": 169,
+      "trades": 116,
+      "fillRate": 0.686,
+      "winRate": 0.267,
+      "avgR": -0.231,
+      "totalR": -26.8,
+      "profitFactor": 0.71,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -34.2
+     },
+     "GBPUSD": {
+      "signals": 177,
+      "trades": 123,
+      "fillRate": 0.695,
+      "winRate": 0.285,
+      "avgR": -0.149,
+      "totalR": -18.4,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 9,
+      "maxDrawdownR": -33.2
+     },
+     "NZDCAD": {
+      "signals": 75,
+      "trades": 52,
+      "fillRate": 0.693,
+      "winRate": 0.25,
+      "avgR": -0.222,
+      "totalR": -11.6,
+      "profitFactor": 0.74,
+      "maxLosingStreak": 11,
+      "maxDrawdownR": -19.8
+     },
+     "NZDCHF": {
+      "signals": 57,
+      "trades": 44,
+      "fillRate": 0.772,
+      "winRate": 0.205,
+      "avgR": -0.469,
+      "totalR": -20.6,
+      "profitFactor": 0.49,
+      "maxLosingStreak": 11,
+      "maxDrawdownR": -20.6
+     },
+     "NZDJPY": {
+      "signals": 158,
+      "trades": 103,
+      "fillRate": 0.652,
+      "winRate": 0.33,
+      "avgR": 0.017,
+      "totalR": 1.8,
+      "profitFactor": 1.02,
+      "maxLosingStreak": 8,
+      "maxDrawdownR": -12.7
+     },
+     "NZDUSD": {
+      "signals": 178,
+      "trades": 120,
+      "fillRate": 0.674,
+      "winRate": 0.267,
+      "avgR": -0.174,
+      "totalR": -20.9,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -36.4
+     },
+     "USDCAD": {
+      "signals": 169,
+      "trades": 115,
+      "fillRate": 0.68,
+      "winRate": 0.217,
+      "avgR": -0.368,
+      "totalR": -42.3,
+      "profitFactor": 0.56,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -45.4
+     },
+     "USDCHF": {
+      "signals": 191,
+      "trades": 126,
+      "fillRate": 0.66,
+      "winRate": 0.286,
+      "avgR": -0.197,
+      "totalR": -24.9,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 11,
+      "maxDrawdownR": -27.6
+     },
+     "USDJPY": {
+      "signals": 231,
+      "trades": 153,
+      "fillRate": 0.662,
+      "winRate": 0.327,
+      "avgR": 0.088,
+      "totalR": 13.4,
+      "profitFactor": 1.12,
+      "maxLosingStreak": 9,
+      "maxDrawdownR": -16.0
+     },
+     "XAUUSD": {
+      "signals": 227,
+      "trades": 162,
+      "fillRate": 0.714,
+      "winRate": 0.265,
+      "avgR": -0.201,
+      "totalR": -32.6,
+      "profitFactor": 0.74,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -44.5
+     }
+    },
+    "byYear": {
+     "2020": {
+      "signals": 534,
+      "trades": 358,
+      "fillRate": 0.67,
+      "winRate": 0.251,
+      "avgR": -0.279,
+      "totalR": -99.7,
+      "profitFactor": 0.66,
+      "maxLosingStreak": 24,
+      "maxDrawdownR": -101.4
+     },
+     "2021": {
+      "signals": 517,
+      "trades": 317,
+      "fillRate": 0.613,
+      "winRate": 0.243,
+      "avgR": -0.292,
+      "totalR": -92.7,
+      "profitFactor": 0.65,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -96.9
+     },
+     "2022": {
+      "signals": 646,
+      "trades": 426,
+      "fillRate": 0.659,
+      "winRate": 0.31,
+      "avgR": -0.083,
+      "totalR": -35.5,
+      "profitFactor": 0.89,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -41.2
+     },
+     "2023": {
+      "signals": 586,
+      "trades": 384,
+      "fillRate": 0.655,
+      "winRate": 0.297,
+      "avgR": -0.093,
+      "totalR": -35.5,
+      "profitFactor": 0.88,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -44.1
+     },
+     "2024": {
+      "signals": 651,
+      "trades": 437,
+      "fillRate": 0.671,
+      "winRate": 0.254,
+      "avgR": -0.244,
+      "totalR": -106.7,
+      "profitFactor": 0.7,
+      "maxLosingStreak": 26,
+      "maxDrawdownR": -121.1
+     },
+     "2025": {
+      "signals": 610,
+      "trades": 385,
+      "fillRate": 0.631,
+      "winRate": 0.296,
+      "avgR": -0.115,
+      "totalR": -44.4,
+      "profitFactor": 0.85,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -64.4
+     },
+     "2026": {
+      "signals": 408,
+      "trades": 269,
+      "fillRate": 0.659,
+      "winRate": 0.242,
+      "avgR": -0.287,
+      "totalR": -77.2,
+      "profitFactor": 0.65,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -84.2
+     }
+    },
+    "byOrder": {
+     "limite": {
+      "signals": 2555,
+      "trades": 1189,
+      "fillRate": 0.465,
+      "winRate": 0.297,
+      "avgR": -0.146,
+      "totalR": -174.0,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -179.2
+     },
+     "marché": {
+      "signals": 1397,
+      "trades": 1387,
+      "fillRate": 0.993,
+      "winRate": 0.252,
+      "avgR": -0.229,
+      "totalR": -317.8,
+      "profitFactor": 0.72,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -334.0
+     }
+    },
+    "byHour": {
+     "10": {
+      "signals": 288,
+      "trades": 211,
+      "fillRate": 0.733,
+      "winRate": 0.242,
+      "avgR": -0.33,
+      "totalR": -69.6,
+      "profitFactor": 0.61,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -72.6
+     },
+     "11": {
+      "signals": 219,
+      "trades": 156,
+      "fillRate": 0.712,
+      "winRate": 0.231,
+      "avgR": -0.275,
+      "totalR": -43.0,
+      "profitFactor": 0.67,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -43.0
+     },
+     "12": {
+      "signals": 192,
+      "trades": 141,
+      "fillRate": 0.734,
+      "winRate": 0.284,
+      "avgR": -0.203,
+      "totalR": -28.6,
+      "profitFactor": 0.74,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -45.3
+     },
+     "13": {
+      "signals": 245,
+      "trades": 162,
+      "fillRate": 0.661,
+      "winRate": 0.21,
+      "avgR": -0.388,
+      "totalR": -62.8,
+      "profitFactor": 0.55,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -67.2
+     },
+     "14": {
+      "signals": 357,
+      "trades": 245,
+      "fillRate": 0.686,
+      "winRate": 0.31,
+      "avgR": -0.101,
+      "totalR": -24.8,
+      "profitFactor": 0.87,
+      "maxLosingStreak": 11,
+      "maxDrawdownR": -37.9
+     },
+     "15": {
+      "signals": 381,
+      "trades": 266,
+      "fillRate": 0.698,
+      "winRate": 0.278,
+      "avgR": -0.195,
+      "totalR": -51.8,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -58.0
+     },
+     "16": {
+      "signals": 355,
+      "trades": 227,
+      "fillRate": 0.639,
+      "winRate": 0.238,
+      "avgR": -0.277,
+      "totalR": -62.9,
+      "profitFactor": 0.67,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -79.4
+     },
+     "17": {
+      "signals": 343,
+      "trades": 207,
+      "fillRate": 0.603,
+      "winRate": 0.343,
+      "avgR": 0.079,
+      "totalR": 16.3,
+      "profitFactor": 1.11,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -15.1
+     },
+     "18": {
+      "signals": 210,
+      "trades": 117,
+      "fillRate": 0.557,
+      "winRate": 0.325,
+      "avgR": -0.012,
+      "totalR": -1.4,
+      "profitFactor": 0.98,
+      "maxLosingStreak": 7,
+      "maxDrawdownR": -18.8
+     },
+     "19": {
+      "signals": 214,
+      "trades": 128,
+      "fillRate": 0.598,
+      "winRate": 0.273,
+      "avgR": -0.161,
+      "totalR": -20.6,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -33.3
+     },
+     "20": {
+      "signals": 210,
+      "trades": 133,
+      "fillRate": 0.633,
+      "winRate": 0.278,
+      "avgR": -0.185,
+      "totalR": -24.6,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -43.6
+     },
+     "8": {
+      "signals": 564,
+      "trades": 320,
+      "fillRate": 0.567,
+      "winRate": 0.247,
+      "avgR": -0.301,
+      "totalR": -96.2,
+      "profitFactor": 0.64,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -96.2
+     },
+     "9": {
+      "signals": 374,
+      "trades": 263,
+      "fillRate": 0.703,
+      "winRate": 0.297,
+      "avgR": -0.083,
+      "totalR": -21.9,
+      "profitFactor": 0.89,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -37.1
+     }
+    }
+   },
+   "validity": {
+    "6 h": {
+     "all": {
+      "signals": 3952,
+      "trades": 2576,
+      "fillRate": 0.652,
+      "winRate": 0.273,
+      "avgR": -0.191,
+      "totalR": -491.8,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 26,
+      "maxDrawdownR": -498.8
+     },
+     "test": {
+      "signals": 655,
+      "trades": 424,
+      "fillRate": 0.647,
+      "winRate": 0.252,
+      "avgR": -0.259,
+      "totalR": -109.7,
+      "profitFactor": 0.69,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -123.7
+     }
+    },
+    "12 h": {
+     "all": {
+      "signals": 3952,
+      "trades": 2675,
+      "fillRate": 0.677,
+      "winRate": 0.273,
+      "avgR": -0.191,
+      "totalR": -509.8,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 24,
+      "maxDrawdownR": -523.6
+     },
+     "test": {
+      "signals": 655,
+      "trades": 443,
+      "fillRate": 0.676,
+      "winRate": 0.257,
+      "avgR": -0.245,
+      "totalR": -108.6,
+      "profitFactor": 0.7,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -128.2
+     }
+    },
+    "24 h": {
+     "all": {
+      "signals": 3952,
+      "trades": 2738,
+      "fillRate": 0.693,
+      "winRate": 0.272,
+      "avgR": -0.192,
+      "totalR": -524.6,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -538.3
+     },
+     "test": {
+      "signals": 655,
+      "trades": 447,
+      "fillRate": 0.682,
+      "winRate": 0.257,
+      "avgR": -0.247,
+      "totalR": -110.4,
+      "profitFactor": 0.7,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -130.0
+     }
+    }
+   },
+   "bySetup": {
+    "S1": {
+     "signals": 6369,
+     "trades": 2961,
+     "fillRate": 0.465,
+     "winRate": 0.578,
+     "avgR": -0.079,
+     "totalR": -233.2,
+     "profitFactor": 0.83,
+     "maxLosingStreak": 10,
+     "maxDrawdownR": -258.2
+    },
+    "S2": {
+     "signals": 22612,
+     "trades": 12686,
+     "fillRate": 0.561,
+     "winRate": 0.568,
+     "avgR": -0.076,
+     "totalR": -962.0,
+     "profitFactor": 0.84,
+     "maxLosingStreak": 17,
+     "maxDrawdownR": -966.6
+    },
+    "S3": {
+     "signals": 5686,
+     "trades": 3265,
+     "fillRate": 0.574,
+     "winRate": 0.561,
+     "avgR": -0.107,
+     "totalR": -350.6,
+     "profitFactor": 0.78,
+     "maxLosingStreak": 11,
+     "maxDrawdownR": -354.5
+    },
+    "S4": {
+     "signals": 6798,
+     "trades": 3794,
+     "fillRate": 0.558,
+     "winRate": 0.558,
+     "avgR": -0.056,
+     "totalR": -213.2,
+     "profitFactor": 0.88,
+     "maxLosingStreak": 9,
+     "maxDrawdownR": -218.6
+    }
+   },
+   "byRR": {
+    "0-1": {
+     "signals": 31167,
+     "trades": 16191,
+     "fillRate": 0.519,
+     "winRate": 0.652,
+     "avgR": -0.051,
+     "totalR": -825.4,
+     "profitFactor": 0.87,
+     "maxLosingStreak": 11,
+     "maxDrawdownR": -839.3
+    },
+    "1-1.5": {
+     "signals": 6346,
+     "trades": 3939,
+     "fillRate": 0.621,
+     "winRate": 0.409,
+     "avgR": -0.112,
+     "totalR": -441.8,
+     "profitFactor": 0.83,
+     "maxLosingStreak": 18,
+     "maxDrawdownR": -460.9
+    },
+    "1.5-2": {
+     "signals": 2259,
+     "trades": 1421,
+     "fillRate": 0.629,
+     "winRate": 0.31,
+     "avgR": -0.186,
+     "totalR": -265.0,
+     "profitFactor": 0.75,
+     "maxLosingStreak": 19,
+     "maxDrawdownR": -277.7
+    },
+    "2-3": {
+     "signals": 1254,
+     "trades": 827,
+     "fillRate": 0.659,
+     "winRate": 0.25,
+     "avgR": -0.19,
+     "totalR": -156.7,
+     "profitFactor": 0.77,
+     "maxLosingStreak": 16,
+     "maxDrawdownR": -169.9
+    },
+    "3-5": {
+     "signals": 330,
+     "trades": 246,
+     "fillRate": 0.745,
+     "winRate": 0.195,
+     "avgR": -0.134,
+     "totalR": -33.0,
+     "profitFactor": 0.85,
+     "maxLosingStreak": 19,
+     "maxDrawdownR": -39.6
+    },
+    "5+": {
+     "signals": 109,
+     "trades": 82,
+     "fillRate": 0.752,
+     "winRate": 0.098,
+     "avgR": -0.453,
+     "totalR": -37.1,
+     "profitFactor": 0.55,
+     "maxLosingStreak": 25,
+     "maxDrawdownR": -45.2
+    }
+   },
+   "byTech": {
+    "50-60": {
+     "signals": 1493,
+     "trades": 772,
+     "fillRate": 0.517,
+     "winRate": 0.715,
+     "avgR": -0.061,
+     "totalR": -47.2,
+     "profitFactor": 0.81,
+     "maxLosingStreak": 5,
+     "maxDrawdownR": -57.9
+    },
+    "60-70": {
+     "signals": 14616,
+     "trades": 7939,
+     "fillRate": 0.543,
+     "winRate": 0.628,
+     "avgR": -0.074,
+     "totalR": -590.0,
+     "profitFactor": 0.82,
+     "maxLosingStreak": 9,
+     "maxDrawdownR": -592.3
+    },
+    "70-80": {
+     "signals": 19284,
+     "trades": 10668,
+     "fillRate": 0.553,
+     "winRate": 0.551,
+     "avgR": -0.073,
+     "totalR": -777.8,
+     "profitFactor": 0.85,
+     "maxLosingStreak": 14,
+     "maxDrawdownR": -805.9
+    },
+    "80-90": {
+     "signals": 5617,
+     "trades": 3064,
+     "fillRate": 0.545,
+     "winRate": 0.451,
+     "avgR": -0.1,
+     "totalR": -305.0,
+     "profitFactor": 0.83,
+     "maxLosingStreak": 15,
+     "maxDrawdownR": -308.6
+    },
+    "90+": {
+     "signals": 455,
+     "trades": 263,
+     "fillRate": 0.578,
+     "winRate": 0.285,
+     "avgR": -0.148,
+     "totalR": -38.9,
+     "profitFactor": 0.81,
+     "maxLosingStreak": 17,
+     "maxDrawdownR": -67.8
+    }
+   },
+   "grid": [
+    {
+     "rrMin": 1.0,
+     "techMin": 50,
+     "train": {
+      "signals": 8584,
+      "trades": 5436,
+      "fillRate": 0.633,
+      "winRate": 0.357,
+      "avgR": -0.139,
+      "totalR": -753.1,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -756.7
+     },
+     "test": {
+      "signals": 1714,
+      "trades": 1079,
+      "fillRate": 0.63,
+      "winRate": 0.348,
+      "avgR": -0.167,
+      "totalR": -180.5,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -192.1
+     }
+    },
+    {
+     "rrMin": 1.0,
+     "techMin": 60,
+     "train": {
+      "signals": 8551,
+      "trades": 5415,
+      "fillRate": 0.633,
+      "winRate": 0.356,
+      "avgR": -0.139,
+      "totalR": -754.7,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -758.4
+     },
+     "test": {
+      "signals": 1704,
+      "trades": 1073,
+      "fillRate": 0.63,
+      "winRate": 0.346,
+      "avgR": -0.173,
+      "totalR": -185.8,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -197.3
+     }
+    },
+    {
+     "rrMin": 1.0,
+     "techMin": 70,
+     "train": {
+      "signals": 7364,
+      "trades": 4662,
+      "fillRate": 0.633,
+      "winRate": 0.347,
+      "avgR": -0.149,
+      "totalR": -696.0,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -700.1
+     },
+     "test": {
+      "signals": 1420,
+      "trades": 892,
+      "fillRate": 0.628,
+      "winRate": 0.341,
+      "avgR": -0.165,
+      "totalR": -147.2,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -164.7
+     }
+    },
+    {
+     "rrMin": 1.0,
+     "techMin": 80,
+     "train": {
+      "signals": 2973,
+      "trades": 1811,
+      "fillRate": 0.609,
+      "winRate": 0.333,
+      "avgR": -0.139,
+      "totalR": -252.6,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -255.4
+     },
+     "test": {
+      "signals": 545,
+      "trades": 324,
+      "fillRate": 0.594,
+      "winRate": 0.349,
+      "avgR": -0.098,
+      "totalR": -31.9,
+      "profitFactor": 0.86,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -40.0
+     }
+    },
+    {
+     "rrMin": 1.2,
+     "techMin": 50,
+     "train": {
+      "signals": 5825,
+      "trades": 3724,
+      "fillRate": 0.639,
+      "winRate": 0.319,
+      "avgR": -0.159,
+      "totalR": -591.3,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -594.1
+     },
+     "test": {
+      "signals": 1172,
+      "trades": 744,
+      "fillRate": 0.635,
+      "winRate": 0.317,
+      "avgR": -0.181,
+      "totalR": -134.8,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -142.5
+     }
+    },
+    {
+     "rrMin": 1.2,
+     "techMin": 60,
+     "train": {
+      "signals": 5811,
+      "trades": 3716,
+      "fillRate": 0.639,
+      "winRate": 0.319,
+      "avgR": -0.16,
+      "totalR": -596.0,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -598.8
+     },
+     "test": {
+      "signals": 1167,
+      "trades": 742,
+      "fillRate": 0.636,
+      "winRate": 0.317,
+      "avgR": -0.182,
+      "totalR": -135.1,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -142.7
+     }
+    },
+    {
+     "rrMin": 1.2,
+     "techMin": 70,
+     "train": {
+      "signals": 5305,
+      "trades": 3384,
+      "fillRate": 0.638,
+      "winRate": 0.31,
+      "avgR": -0.176,
+      "totalR": -596.9,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -600.9
+     },
+     "test": {
+      "signals": 1046,
+      "trades": 672,
+      "fillRate": 0.642,
+      "winRate": 0.314,
+      "avgR": -0.179,
+      "totalR": -120.6,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -128.5
+     }
+    },
+    {
+     "rrMin": 1.2,
+     "techMin": 80,
+     "train": {
+      "signals": 2388,
+      "trades": 1474,
+      "fillRate": 0.617,
+      "winRate": 0.305,
+      "avgR": -0.16,
+      "totalR": -235.8,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -239.3
+     },
+     "test": {
+      "signals": 423,
+      "trades": 252,
+      "fillRate": 0.596,
+      "winRate": 0.333,
+      "avgR": -0.081,
+      "totalR": -20.3,
+      "profitFactor": 0.89,
+      "maxLosingStreak": 11,
+      "maxDrawdownR": -30.3
+     }
+    },
+    {
+     "rrMin": 1.5,
+     "techMin": 50,
+     "train": {
+      "signals": 3297,
+      "trades": 2152,
+      "fillRate": 0.653,
+      "winRate": 0.277,
+      "avgR": -0.178,
+      "totalR": -382.1,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 26,
+      "maxDrawdownR": -387.8
+     },
+     "test": {
+      "signals": 655,
+      "trades": 424,
+      "fillRate": 0.647,
+      "winRate": 0.252,
+      "avgR": -0.259,
+      "totalR": -109.7,
+      "profitFactor": 0.69,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -123.7
+     }
+    },
+    {
+     "rrMin": 1.5,
+     "techMin": 60,
+     "train": {
+      "signals": 3297,
+      "trades": 2152,
+      "fillRate": 0.653,
+      "winRate": 0.277,
+      "avgR": -0.178,
+      "totalR": -382.1,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 26,
+      "maxDrawdownR": -387.8
+     },
+     "test": {
+      "signals": 655,
+      "trades": 424,
+      "fillRate": 0.647,
+      "winRate": 0.252,
+      "avgR": -0.259,
+      "totalR": -109.7,
+      "profitFactor": 0.69,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -123.7
+     }
+    },
+    {
+     "rrMin": 1.5,
+     "techMin": 70,
+     "train": {
+      "signals": 3109,
+      "trades": 2028,
+      "fillRate": 0.652,
+      "winRate": 0.276,
+      "avgR": -0.178,
+      "totalR": -360.5,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 26,
+      "maxDrawdownR": -368.3
+     },
+     "test": {
+      "signals": 608,
+      "trades": 395,
+      "fillRate": 0.65,
+      "winRate": 0.256,
+      "avgR": -0.246,
+      "totalR": -97.1,
+      "profitFactor": 0.7,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -107.8
+     }
+    },
+    {
+     "rrMin": 1.5,
+     "techMin": 80,
+     "train": {
+      "signals": 1607,
+      "trades": 1008,
+      "fillRate": 0.627,
+      "winRate": 0.263,
+      "avgR": -0.196,
+      "totalR": -197.3,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -206.4
+     },
+     "test": {
+      "signals": 272,
+      "trades": 168,
+      "fillRate": 0.618,
+      "winRate": 0.268,
+      "avgR": -0.168,
+      "totalR": -28.1,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -41.0
+     }
+    },
+    {
+     "rrMin": 2.0,
+     "techMin": 50,
+     "train": {
+      "signals": 1427,
+      "trades": 977,
+      "fillRate": 0.685,
+      "winRate": 0.228,
+      "avgR": -0.193,
+      "totalR": -188.3,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -196.3
+     },
+     "test": {
+      "signals": 266,
+      "trades": 178,
+      "fillRate": 0.669,
+      "winRate": 0.225,
+      "avgR": -0.216,
+      "totalR": -38.5,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -55.8
+     }
+    },
+    {
+     "rrMin": 2.0,
+     "techMin": 60,
+     "train": {
+      "signals": 1427,
+      "trades": 977,
+      "fillRate": 0.685,
+      "winRate": 0.228,
+      "avgR": -0.193,
+      "totalR": -188.3,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -196.3
+     },
+     "test": {
+      "signals": 266,
+      "trades": 178,
+      "fillRate": 0.669,
+      "winRate": 0.225,
+      "avgR": -0.216,
+      "totalR": -38.5,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -55.8
+     }
+    },
+    {
+     "rrMin": 2.0,
+     "techMin": 70,
+     "train": {
+      "signals": 1384,
+      "trades": 944,
+      "fillRate": 0.682,
+      "winRate": 0.224,
+      "avgR": -0.208,
+      "totalR": -196.2,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -204.0
+     },
+     "test": {
+      "signals": 255,
+      "trades": 170,
+      "fillRate": 0.667,
+      "winRate": 0.218,
+      "avgR": -0.233,
+      "totalR": -39.7,
+      "profitFactor": 0.73,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -55.7
+     }
+    },
+    {
+     "rrMin": 2.0,
+     "techMin": 80,
+     "train": {
+      "signals": 883,
+      "trades": 573,
+      "fillRate": 0.649,
+      "winRate": 0.201,
+      "avgR": -0.287,
+      "totalR": -164.6,
+      "profitFactor": 0.67,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -167.4
+     },
+     "test": {
+      "signals": 132,
+      "trades": 82,
+      "fillRate": 0.621,
+      "winRate": 0.22,
+      "avgR": -0.153,
+      "totalR": -12.5,
+      "profitFactor": 0.82,
+      "maxLosingStreak": 11,
+      "maxDrawdownR": -25.3
+     }
+    },
+    {
+     "rrMin": 2.5,
+     "techMin": 50,
+     "train": {
+      "signals": 695,
+      "trades": 498,
+      "fillRate": 0.717,
+      "winRate": 0.191,
+      "avgR": -0.215,
+      "totalR": -107.2,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -113.4
+     },
+     "test": {
+      "signals": 103,
+      "trades": 73,
+      "fillRate": 0.709,
+      "winRate": 0.192,
+      "avgR": -0.198,
+      "totalR": -14.5,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -18.5
+     }
+    },
+    {
+     "rrMin": 2.5,
+     "techMin": 60,
+     "train": {
+      "signals": 695,
+      "trades": 498,
+      "fillRate": 0.717,
+      "winRate": 0.191,
+      "avgR": -0.215,
+      "totalR": -107.2,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -113.4
+     },
+     "test": {
+      "signals": 103,
+      "trades": 73,
+      "fillRate": 0.709,
+      "winRate": 0.192,
+      "avgR": -0.198,
+      "totalR": -14.5,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -18.5
+     }
+    },
+    {
+     "rrMin": 2.5,
+     "techMin": 70,
+     "train": {
+      "signals": 687,
+      "trades": 491,
+      "fillRate": 0.715,
+      "winRate": 0.189,
+      "avgR": -0.223,
+      "totalR": -109.3,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -115.5
+     },
+     "test": {
+      "signals": 101,
+      "trades": 71,
+      "fillRate": 0.703,
+      "winRate": 0.197,
+      "avgR": -0.171,
+      "totalR": -12.2,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -17.3
+     }
+    },
+    {
+     "rrMin": 2.5,
+     "techMin": 80,
+     "train": {
+      "signals": 470,
+      "trades": 321,
+      "fillRate": 0.683,
+      "winRate": 0.171,
+      "avgR": -0.308,
+      "totalR": -98.8,
+      "profitFactor": 0.66,
+      "maxLosingStreak": 19,
+      "maxDrawdownR": -101.6
+     },
+     "test": {
+      "signals": 66,
+      "trades": 45,
+      "fillRate": 0.682,
+      "winRate": 0.222,
+      "avgR": -0.03,
+      "totalR": -1.3,
+      "profitFactor": 0.97,
+      "maxLosingStreak": 7,
+      "maxDrawdownR": -11.2
+     }
+    },
+    {
+     "rrMin": 3.0,
+     "techMin": 50,
+     "train": {
+      "signals": 389,
+      "trades": 288,
+      "fillRate": 0.74,
+      "winRate": 0.174,
+      "avgR": -0.207,
+      "totalR": -59.6,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -66.0
+     },
+     "test": {
+      "signals": 50,
+      "trades": 40,
+      "fillRate": 0.8,
+      "winRate": 0.15,
+      "avgR": -0.262,
+      "totalR": -10.5,
+      "profitFactor": 0.72,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -16.0
+     }
+    },
+    {
+     "rrMin": 3.0,
+     "techMin": 60,
+     "train": {
+      "signals": 389,
+      "trades": 288,
+      "fillRate": 0.74,
+      "winRate": 0.174,
+      "avgR": -0.207,
+      "totalR": -59.6,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -66.0
+     },
+     "test": {
+      "signals": 50,
+      "trades": 40,
+      "fillRate": 0.8,
+      "winRate": 0.15,
+      "avgR": -0.262,
+      "totalR": -10.5,
+      "profitFactor": 0.72,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -16.0
+     }
+    },
+    {
+     "rrMin": 3.0,
+     "techMin": 70,
+     "train": {
+      "signals": 384,
+      "trades": 284,
+      "fillRate": 0.74,
+      "winRate": 0.169,
+      "avgR": -0.229,
+      "totalR": -65.1,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 26,
+      "maxDrawdownR": -71.5
+     },
+     "test": {
+      "signals": 49,
+      "trades": 39,
+      "fillRate": 0.796,
+      "winRate": 0.154,
+      "avgR": -0.239,
+      "totalR": -9.3,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -16.0
+     }
+    },
+    {
+     "rrMin": 3.0,
+     "techMin": 80,
+     "train": {
+      "signals": 272,
+      "trades": 194,
+      "fillRate": 0.713,
+      "winRate": 0.17,
+      "avgR": -0.253,
+      "totalR": -49.1,
+      "profitFactor": 0.73,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -49.1
+     },
+     "test": {
+      "signals": 35,
+      "trades": 27,
+      "fillRate": 0.771,
+      "winRate": 0.148,
+      "avgR": -0.226,
+      "totalR": -6.1,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -14.9
+     }
+    }
+   ],
+   "bestOnTrain": {
+    "rrMin": 1.0,
+    "techMin": 50,
+    "train": {
+     "signals": 8584,
+     "trades": 5436,
+     "fillRate": 0.633,
+     "winRate": 0.357,
+     "avgR": -0.139,
+     "totalR": -753.1,
+     "profitFactor": 0.8,
+     "maxLosingStreak": 25,
+     "maxDrawdownR": -756.7
+    },
+    "test": {
+     "signals": 1714,
+     "trades": 1079,
+     "fillRate": 0.63,
+     "winRate": 0.348,
+     "avgR": -0.167,
+     "totalR": -180.5,
+     "profitFactor": 0.77,
+     "maxLosingStreak": 15,
+     "maxDrawdownR": -192.1
+    }
+   }
+  },
+  "tp2": {
+   "all": {
+    "signals": 40311,
+    "trades": 22240,
+    "fillRate": 0.552,
+    "winRate": 0.478,
+    "avgR": -0.098,
+    "totalR": -2184.4,
+    "profitFactor": 0.83,
+    "maxLosingStreak": 28,
+    "maxDrawdownR": -2185.1
+   },
+   "currentRules": {
+    "rule": "RR >= 1,5 et score technique >= 60 (sans fondamental)",
+    "all": {
+     "signals": 7888,
+     "trades": 5019,
+     "fillRate": 0.636,
+     "winRate": 0.272,
+     "avgR": -0.171,
+     "totalR": -858.6,
+     "profitFactor": 0.79,
+     "maxLosingStreak": 36,
+     "maxDrawdownR": -859.0
+    },
+    "train": {
+     "signals": 6532,
+     "trades": 4178,
+     "fillRate": 0.64,
+     "winRate": 0.272,
+     "avgR": -0.17,
+     "totalR": -711.2,
+     "profitFactor": 0.79,
+     "maxLosingStreak": 36,
+     "maxDrawdownR": -727.8
+    },
+    "test": {
+     "signals": 1356,
+     "trades": 841,
+     "fillRate": 0.62,
+     "winRate": 0.27,
+     "avgR": -0.175,
+     "totalR": -147.4,
+     "profitFactor": 0.78,
+     "maxLosingStreak": 23,
+     "maxDrawdownR": -153.7
+    },
+    "bySetup": {
+     "S1": {
+      "signals": 1267,
+      "trades": 543,
+      "fillRate": 0.429,
+      "winRate": 0.273,
+      "avgR": -0.14,
+      "totalR": -76.0,
+      "profitFactor": 0.82,
+      "maxLosingStreak": 19,
+      "maxDrawdownR": -91.4
+     },
+     "S2": {
+      "signals": 4780,
+      "trades": 3111,
+      "fillRate": 0.651,
+      "winRate": 0.278,
+      "avgR": -0.156,
+      "totalR": -486.3,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 35,
+      "maxDrawdownR": -486.7
+     },
+     "S3": {
+      "signals": 961,
+      "trades": 715,
+      "fillRate": 0.744,
+      "winRate": 0.249,
+      "avgR": -0.24,
+      "totalR": -171.5,
+      "profitFactor": 0.72,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -173.9
+     },
+     "S4": {
+      "signals": 880,
+      "trades": 650,
+      "fillRate": 0.739,
+      "winRate": 0.265,
+      "avgR": -0.192,
+      "totalR": -124.7,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -132.7
+     }
+    },
+    "bySession": {
+     "Fin de journée (17-18 h)": {
+      "signals": 1006,
+      "trades": 537,
+      "fillRate": 0.534,
+      "winRate": 0.285,
+      "avgR": -0.091,
+      "totalR": -48.7,
+      "profitFactor": 0.88,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -77.5
+     },
+     "Londres (8-12 h)": {
+      "signals": 3651,
+      "trades": 2442,
+      "fillRate": 0.669,
+      "winRate": 0.269,
+      "avgR": -0.19,
+      "totalR": -463.1,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -465.8
+     },
+     "New York (13-16 h)": {
+      "signals": 2480,
+      "trades": 1596,
+      "fillRate": 0.644,
+      "winRate": 0.276,
+      "avgR": -0.151,
+      "totalR": -241.5,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 24,
+      "maxDrawdownR": -250.3
+     },
+     "Soir (19-20 h)": {
+      "signals": 751,
+      "trades": 444,
+      "fillRate": 0.591,
+      "winRate": 0.252,
+      "avgR": -0.237,
+      "totalR": -105.2,
+      "profitFactor": 0.71,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -109.6
+     }
+    },
+    "byPair": {
+     "AUDCAD": {
+      "signals": 177,
+      "trades": 117,
+      "fillRate": 0.661,
+      "winRate": 0.282,
+      "avgR": -0.21,
+      "totalR": -24.5,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 9,
+      "maxDrawdownR": -34.0
+     },
+     "AUDCHF": {
+      "signals": 168,
+      "trades": 107,
+      "fillRate": 0.637,
+      "winRate": 0.271,
+      "avgR": -0.191,
+      "totalR": -20.4,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -36.6
+     },
+     "AUDJPY": {
+      "signals": 304,
+      "trades": 192,
+      "fillRate": 0.632,
+      "winRate": 0.25,
+      "avgR": -0.294,
+      "totalR": -56.4,
+      "profitFactor": 0.65,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -71.4
+     },
+     "AUDNZD": {
+      "signals": 140,
+      "trades": 88,
+      "fillRate": 0.629,
+      "winRate": 0.295,
+      "avgR": -0.11,
+      "totalR": -9.7,
+      "profitFactor": 0.86,
+      "maxLosingStreak": 7,
+      "maxDrawdownR": -14.8
+     },
+     "AUDUSD": {
+      "signals": 342,
+      "trades": 218,
+      "fillRate": 0.637,
+      "winRate": 0.317,
+      "avgR": -0.012,
+      "totalR": -2.6,
+      "profitFactor": 0.98,
+      "maxLosingStreak": 9,
+      "maxDrawdownR": -23.6
+     },
+     "CADCHF": {
+      "signals": 139,
+      "trades": 90,
+      "fillRate": 0.647,
+      "winRate": 0.289,
+      "avgR": -0.173,
+      "totalR": -15.6,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 8,
+      "maxDrawdownR": -15.7
+     },
+     "CADJPY": {
+      "signals": 284,
+      "trades": 169,
+      "fillRate": 0.595,
+      "winRate": 0.29,
+      "avgR": -0.053,
+      "totalR": -8.9,
+      "profitFactor": 0.93,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -18.2
+     },
+     "CHFJPY": {
+      "signals": 277,
+      "trades": 177,
+      "fillRate": 0.639,
+      "winRate": 0.322,
+      "avgR": 0.066,
+      "totalR": 11.7,
+      "profitFactor": 1.09,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -25.2
+     },
+     "EURAUD": {
+      "signals": 280,
+      "trades": 161,
+      "fillRate": 0.575,
+      "winRate": 0.211,
+      "avgR": -0.416,
+      "totalR": -67.0,
+      "profitFactor": 0.52,
+      "maxLosingStreak": 19,
+      "maxDrawdownR": -67.5
+     },
+     "EURCAD": {
+      "signals": 237,
+      "trades": 155,
+      "fillRate": 0.654,
+      "winRate": 0.31,
+      "avgR": -0.045,
+      "totalR": -6.9,
+      "profitFactor": 0.94,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -26.3
+     },
+     "EURCHF": {
+      "signals": 121,
+      "trades": 68,
+      "fillRate": 0.562,
+      "winRate": 0.338,
+      "avgR": 0.122,
+      "totalR": 8.3,
+      "profitFactor": 1.16,
+      "maxLosingStreak": 7,
+      "maxDrawdownR": -10.2
+     },
+     "EURGBP": {
+      "signals": 143,
+      "trades": 94,
+      "fillRate": 0.657,
+      "winRate": 0.181,
+      "avgR": -0.572,
+      "totalR": -53.7,
+      "profitFactor": 0.39,
+      "maxLosingStreak": 9,
+      "maxDrawdownR": -53.7
+     },
+     "EURJPY": {
+      "signals": 297,
+      "trades": 187,
+      "fillRate": 0.63,
+      "winRate": 0.278,
+      "avgR": -0.071,
+      "totalR": -13.2,
+      "profitFactor": 0.91,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -22.7
+     },
+     "EURNZD": {
+      "signals": 312,
+      "trades": 206,
+      "fillRate": 0.66,
+      "winRate": 0.272,
+      "avgR": -0.225,
+      "totalR": -46.4,
+      "profitFactor": 0.72,
+      "maxLosingStreak": 22,
+      "maxDrawdownR": -51.4
+     },
+     "EURUSD": {
+      "signals": 347,
+      "trades": 230,
+      "fillRate": 0.663,
+      "winRate": 0.296,
+      "avgR": -0.095,
+      "totalR": -21.8,
+      "profitFactor": 0.87,
+      "maxLosingStreak": 8,
+      "maxDrawdownR": -31.6
+     },
+     "GBPAUD": {
+      "signals": 306,
+      "trades": 185,
+      "fillRate": 0.605,
+      "winRate": 0.303,
+      "avgR": -0.094,
+      "totalR": -17.5,
+      "profitFactor": 0.87,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -19.3
+     },
+     "GBPCAD": {
+      "signals": 283,
+      "trades": 184,
+      "fillRate": 0.65,
+      "winRate": 0.223,
+      "avgR": -0.373,
+      "totalR": -68.7,
+      "profitFactor": 0.56,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -71.6
+     },
+     "GBPCHF": {
+      "signals": 248,
+      "trades": 160,
+      "fillRate": 0.645,
+      "winRate": 0.244,
+      "avgR": -0.259,
+      "totalR": -41.4,
+      "profitFactor": 0.69,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -44.3
+     },
+     "GBPJPY": {
+      "signals": 315,
+      "trades": 182,
+      "fillRate": 0.578,
+      "winRate": 0.242,
+      "avgR": -0.187,
+      "totalR": -34.0,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -43.4
+     },
+     "GBPNZD": {
+      "signals": 319,
+      "trades": 196,
+      "fillRate": 0.614,
+      "winRate": 0.26,
+      "avgR": -0.188,
+      "totalR": -36.9,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -39.7
+     },
+     "GBPUSD": {
+      "signals": 328,
+      "trades": 212,
+      "fillRate": 0.646,
+      "winRate": 0.288,
+      "avgR": -0.132,
+      "totalR": -28.0,
+      "profitFactor": 0.83,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -35.1
+     },
+     "NZDCAD": {
+      "signals": 197,
+      "trades": 128,
+      "fillRate": 0.65,
+      "winRate": 0.258,
+      "avgR": -0.29,
+      "totalR": -37.2,
+      "profitFactor": 0.66,
+      "maxLosingStreak": 12,
+      "maxDrawdownR": -39.5
+     },
+     "NZDCHF": {
+      "signals": 141,
+      "trades": 104,
+      "fillRate": 0.738,
+      "winRate": 0.212,
+      "avgR": -0.425,
+      "totalR": -44.2,
+      "profitFactor": 0.53,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -48.0
+     },
+     "NZDJPY": {
+      "signals": 310,
+      "trades": 198,
+      "fillRate": 0.639,
+      "winRate": 0.278,
+      "avgR": -0.106,
+      "totalR": -21.0,
+      "profitFactor": 0.87,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -36.7
+     },
+     "NZDUSD": {
+      "signals": 346,
+      "trades": 213,
+      "fillRate": 0.616,
+      "winRate": 0.277,
+      "avgR": -0.176,
+      "totalR": -37.5,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 29,
+      "maxDrawdownR": -46.7
+     },
+     "USDCAD": {
+      "signals": 343,
+      "trades": 223,
+      "fillRate": 0.65,
+      "winRate": 0.224,
+      "avgR": -0.291,
+      "totalR": -65.0,
+      "profitFactor": 0.65,
+      "maxLosingStreak": 22,
+      "maxDrawdownR": -70.0
+     },
+     "USDCHF": {
+      "signals": 343,
+      "trades": 218,
+      "fillRate": 0.636,
+      "winRate": 0.289,
+      "avgR": -0.107,
+      "totalR": -23.2,
+      "profitFactor": 0.86,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -25.7
+     },
+     "USDJPY": {
+      "signals": 427,
+      "trades": 267,
+      "fillRate": 0.625,
+      "winRate": 0.303,
+      "avgR": -0.035,
+      "totalR": -9.3,
+      "profitFactor": 0.95,
+      "maxLosingStreak": 11,
+      "maxDrawdownR": -26.4
+     },
+     "XAUUSD": {
+      "signals": 414,
+      "trades": 290,
+      "fillRate": 0.7,
+      "winRate": 0.252,
+      "avgR": -0.233,
+      "totalR": -67.7,
+      "profitFactor": 0.7,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -79.8
+     }
+    },
+    "byYear": {
+     "2020": {
+      "signals": 1053,
+      "trades": 710,
+      "fillRate": 0.674,
+      "winRate": 0.234,
+      "avgR": -0.328,
+      "totalR": -232.9,
+      "profitFactor": 0.61,
+      "maxLosingStreak": 36,
+      "maxDrawdownR": -235.7
+     },
+     "2021": {
+      "signals": 1066,
+      "trades": 680,
+      "fillRate": 0.638,
+      "winRate": 0.275,
+      "avgR": -0.186,
+      "totalR": -126.5,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -138.1
+     },
+     "2022": {
+      "signals": 1262,
+      "trades": 808,
+      "fillRate": 0.64,
+      "winRate": 0.295,
+      "avgR": -0.108,
+      "totalR": -87.0,
+      "profitFactor": 0.86,
+      "maxLosingStreak": 19,
+      "maxDrawdownR": -101.9
+     },
+     "2023": {
+      "signals": 1199,
+      "trades": 778,
+      "fillRate": 0.649,
+      "winRate": 0.292,
+      "avgR": -0.084,
+      "totalR": -65.6,
+      "profitFactor": 0.89,
+      "maxLosingStreak": 19,
+      "maxDrawdownR": -82.0
+     },
+     "2024": {
+      "signals": 1245,
+      "trades": 758,
+      "fillRate": 0.609,
+      "winRate": 0.249,
+      "avgR": -0.205,
+      "totalR": -155.3,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -179.0
+     },
+     "2025": {
+      "signals": 1237,
+      "trades": 782,
+      "fillRate": 0.632,
+      "winRate": 0.289,
+      "avgR": -0.111,
+      "totalR": -87.0,
+      "profitFactor": 0.86,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -115.1
+     },
+     "2026": {
+      "signals": 826,
+      "trades": 503,
+      "fillRate": 0.609,
+      "winRate": 0.258,
+      "avgR": -0.207,
+      "totalR": -104.3,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -104.7
+     }
+    },
+    "byOrder": {
+     "limite": {
+      "signals": 5129,
+      "trades": 2288,
+      "fillRate": 0.446,
+      "winRate": 0.304,
+      "avgR": -0.089,
+      "totalR": -204.7,
+      "profitFactor": 0.88,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -205.2
+     },
+     "marché": {
+      "signals": 2759,
+      "trades": 2731,
+      "fillRate": 0.99,
+      "winRate": 0.244,
+      "avgR": -0.239,
+      "totalR": -653.8,
+      "profitFactor": 0.71,
+      "maxLosingStreak": 28,
+      "maxDrawdownR": -669.3
+     }
+    },
+    "byHour": {
+     "10": {
+      "signals": 528,
+      "trades": 367,
+      "fillRate": 0.695,
+      "winRate": 0.264,
+      "avgR": -0.244,
+      "totalR": -89.7,
+      "profitFactor": 0.7,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -90.3
+     },
+     "11": {
+      "signals": 427,
+      "trades": 291,
+      "fillRate": 0.681,
+      "winRate": 0.244,
+      "avgR": -0.26,
+      "totalR": -75.7,
+      "profitFactor": 0.69,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -75.7
+     },
+     "12": {
+      "signals": 351,
+      "trades": 248,
+      "fillRate": 0.707,
+      "winRate": 0.274,
+      "avgR": -0.172,
+      "totalR": -42.6,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 24,
+      "maxDrawdownR": -69.1
+     },
+     "13": {
+      "signals": 472,
+      "trades": 321,
+      "fillRate": 0.68,
+      "winRate": 0.259,
+      "avgR": -0.21,
+      "totalR": -67.3,
+      "profitFactor": 0.74,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -72.5
+     },
+     "14": {
+      "signals": 661,
+      "trades": 446,
+      "fillRate": 0.675,
+      "winRate": 0.278,
+      "avgR": -0.142,
+      "totalR": -63.1,
+      "profitFactor": 0.82,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -84.3
+     },
+     "15": {
+      "signals": 759,
+      "trades": 472,
+      "fillRate": 0.622,
+      "winRate": 0.297,
+      "avgR": -0.08,
+      "totalR": -38.0,
+      "profitFactor": 0.9,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -44.6
+     },
+     "16": {
+      "signals": 588,
+      "trades": 357,
+      "fillRate": 0.607,
+      "winRate": 0.261,
+      "avgR": -0.205,
+      "totalR": -73.1,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -84.9
+     },
+     "17": {
+      "signals": 641,
+      "trades": 345,
+      "fillRate": 0.538,
+      "winRate": 0.299,
+      "avgR": -0.048,
+      "totalR": -16.5,
+      "profitFactor": 0.94,
+      "maxLosingStreak": 10,
+      "maxDrawdownR": -46.9
+     },
+     "18": {
+      "signals": 365,
+      "trades": 192,
+      "fillRate": 0.526,
+      "winRate": 0.26,
+      "avgR": -0.168,
+      "totalR": -32.2,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 11,
+      "maxDrawdownR": -35.1
+     },
+     "19": {
+      "signals": 409,
+      "trades": 219,
+      "fillRate": 0.535,
+      "winRate": 0.233,
+      "avgR": -0.291,
+      "totalR": -63.6,
+      "profitFactor": 0.65,
+      "maxLosingStreak": 14,
+      "maxDrawdownR": -67.9
+     },
+     "20": {
+      "signals": 342,
+      "trades": 225,
+      "fillRate": 0.658,
+      "winRate": 0.271,
+      "avgR": -0.185,
+      "totalR": -41.6,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -50.3
+     },
+     "8": {
+      "signals": 1559,
+      "trades": 987,
+      "fillRate": 0.633,
+      "winRate": 0.271,
+      "avgR": -0.191,
+      "totalR": -188.6,
+      "profitFactor": 0.76,
+      "maxLosingStreak": 18,
+      "maxDrawdownR": -188.6
+     },
+     "9": {
+      "signals": 786,
+      "trades": 549,
+      "fillRate": 0.698,
+      "winRate": 0.282,
+      "avgR": -0.121,
+      "totalR": -66.6,
+      "profitFactor": 0.85,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -79.6
+     }
+    }
+   },
+   "validity": {
+    "6 h": {
+     "all": {
+      "signals": 7888,
+      "trades": 5019,
+      "fillRate": 0.636,
+      "winRate": 0.272,
+      "avgR": -0.171,
+      "totalR": -858.6,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 36,
+      "maxDrawdownR": -859.0
+     },
+     "test": {
+      "signals": 1356,
+      "trades": 841,
+      "fillRate": 0.62,
+      "winRate": 0.27,
+      "avgR": -0.175,
+      "totalR": -147.4,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -153.7
+     }
+    },
+    "12 h": {
+     "all": {
+      "signals": 7888,
+      "trades": 5254,
+      "fillRate": 0.666,
+      "winRate": 0.272,
+      "avgR": -0.17,
+      "totalR": -892.3,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 36,
+      "maxDrawdownR": -892.8
+     },
+     "test": {
+      "signals": 1356,
+      "trades": 887,
+      "fillRate": 0.654,
+      "winRate": 0.269,
+      "avgR": -0.18,
+      "totalR": -159.8,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -166.1
+     }
+    },
+    "24 h": {
+     "all": {
+      "signals": 7888,
+      "trades": 5431,
+      "fillRate": 0.689,
+      "winRate": 0.271,
+      "avgR": -0.174,
+      "totalR": -944.8,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 36,
+      "maxDrawdownR": -945.3
+     },
+     "test": {
+      "signals": 1356,
+      "trades": 921,
+      "fillRate": 0.679,
+      "winRate": 0.268,
+      "avgR": -0.188,
+      "totalR": -173.4,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -179.7
+     }
+    }
+   },
+   "bySetup": {
+    "S1": {
+     "signals": 7329,
+     "trades": 3166,
+     "fillRate": 0.432,
+     "winRate": 0.502,
+     "avgR": -0.083,
+     "totalR": -263.8,
+     "profitFactor": 0.84,
+     "maxLosingStreak": 20,
+     "maxDrawdownR": -285.3
+    },
+    "S2": {
+     "signals": 23410,
+     "trades": 13498,
+     "fillRate": 0.577,
+     "winRate": 0.474,
+     "avgR": -0.097,
+     "totalR": -1303.3,
+     "profitFactor": 0.83,
+     "maxLosingStreak": 17,
+     "maxDrawdownR": -1304.5
+    },
+    "S3": {
+     "signals": 4986,
+     "trades": 2927,
+     "fillRate": 0.587,
+     "winRate": 0.477,
+     "avgR": -0.116,
+     "totalR": -339.2,
+     "profitFactor": 0.8,
+     "maxLosingStreak": 13,
+     "maxDrawdownR": -342.9
+    },
+    "S4": {
+     "signals": 4586,
+     "trades": 2649,
+     "fillRate": 0.578,
+     "winRate": 0.468,
+     "avgR": -0.105,
+     "totalR": -278.1,
+     "profitFactor": 0.82,
+     "maxLosingStreak": 12,
+     "maxDrawdownR": -284.6
+    }
+   },
+   "byRR": {
+    "0-1": {
+     "signals": 22835,
+     "trades": 11272,
+     "fillRate": 0.494,
+     "winRate": 0.607,
+     "avgR": -0.058,
+     "totalR": -655.0,
+     "profitFactor": 0.87,
+     "maxLosingStreak": 14,
+     "maxDrawdownR": -664.0
+    },
+    "1-1.5": {
+     "signals": 9588,
+     "trades": 5949,
+     "fillRate": 0.62,
+     "winRate": 0.407,
+     "avgR": -0.113,
+     "totalR": -670.9,
+     "profitFactor": 0.83,
+     "maxLosingStreak": 18,
+     "maxDrawdownR": -691.2
+    },
+    "1.5-2": {
+     "signals": 4194,
+     "trades": 2565,
+     "fillRate": 0.612,
+     "winRate": 0.315,
+     "avgR": -0.162,
+     "totalR": -414.8,
+     "profitFactor": 0.78,
+     "maxLosingStreak": 16,
+     "maxDrawdownR": -415.3
+    },
+    "2-3": {
+     "signals": 2604,
+     "trades": 1652,
+     "fillRate": 0.634,
+     "winRate": 0.249,
+     "avgR": -0.188,
+     "totalR": -310.4,
+     "profitFactor": 0.77,
+     "maxLosingStreak": 18,
+     "maxDrawdownR": -320.8
+    },
+    "3-5": {
+     "signals": 877,
+     "trades": 631,
+     "fillRate": 0.719,
+     "winRate": 0.197,
+     "avgR": -0.13,
+     "totalR": -82.1,
+     "profitFactor": 0.85,
+     "maxLosingStreak": 23,
+     "maxDrawdownR": -94.7
+    },
+    "5+": {
+     "signals": 213,
+     "trades": 171,
+     "fillRate": 0.803,
+     "winRate": 0.105,
+     "avgR": -0.299,
+     "totalR": -51.2,
+     "profitFactor": 0.7,
+     "maxLosingStreak": 30,
+     "maxDrawdownR": -60.5
+    }
+   },
+   "byTech": {
+    "50-60": {
+     "signals": 690,
+     "trades": 337,
+     "fillRate": 0.488,
+     "winRate": 0.662,
+     "avgR": -0.074,
+     "totalR": -25.1,
+     "profitFactor": 0.81,
+     "maxLosingStreak": 5,
+     "maxDrawdownR": -31.5
+    },
+    "60-70": {
+     "signals": 10843,
+     "trades": 5752,
+     "fillRate": 0.53,
+     "winRate": 0.567,
+     "avgR": -0.091,
+     "totalR": -525.3,
+     "profitFactor": 0.81,
+     "maxLosingStreak": 20,
+     "maxDrawdownR": -528.6
+    },
+    "70-80": {
+     "signals": 19862,
+     "trades": 11053,
+     "fillRate": 0.556,
+     "winRate": 0.475,
+     "avgR": -0.101,
+     "totalR": -1118.9,
+     "profitFactor": 0.82,
+     "maxLosingStreak": 16,
+     "maxDrawdownR": -1130.5
+    },
+    "80-90": {
+     "signals": 7960,
+     "trades": 4523,
+     "fillRate": 0.568,
+     "winRate": 0.383,
+     "avgR": -0.1,
+     "totalR": -452.9,
+     "profitFactor": 0.85,
+     "maxLosingStreak": 16,
+     "maxDrawdownR": -454.1
+    },
+    "90+": {
+     "signals": 956,
+     "trades": 575,
+     "fillRate": 0.601,
+     "winRate": 0.278,
+     "avgR": -0.108,
+     "totalR": -62.3,
+     "profitFactor": 0.86,
+     "maxLosingStreak": 19,
+     "maxDrawdownR": -87.7
+    }
+   },
+   "grid": [
+    {
+     "rrMin": 1.0,
+     "techMin": 50,
+     "train": {
+      "signals": 14538,
+      "trades": 9121,
+      "fillRate": 0.627,
+      "winRate": 0.346,
+      "avgR": -0.137,
+      "totalR": -1252.2,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 32,
+      "maxDrawdownR": -1264.9
+     },
+     "test": {
+      "signals": 2938,
+      "trades": 1847,
+      "fillRate": 0.629,
+      "winRate": 0.341,
+      "avgR": -0.15,
+      "totalR": -277.3,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -286.0
+     }
+    },
+    {
+     "rrMin": 1.0,
+     "techMin": 60,
+     "train": {
+      "signals": 14499,
+      "trades": 9100,
+      "fillRate": 0.628,
+      "winRate": 0.346,
+      "avgR": -0.137,
+      "totalR": -1243.4,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 32,
+      "maxDrawdownR": -1256.1
+     },
+     "test": {
+      "signals": 2923,
+      "trades": 1837,
+      "fillRate": 0.628,
+      "winRate": 0.339,
+      "avgR": -0.153,
+      "totalR": -281.3,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -290.0
+     }
+    },
+    {
+     "rrMin": 1.0,
+     "techMin": 70,
+     "train": {
+      "signals": 12898,
+      "trades": 8129,
+      "fillRate": 0.63,
+      "winRate": 0.339,
+      "avgR": -0.14,
+      "totalR": -1138.5,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 31,
+      "maxDrawdownR": -1150.6
+     },
+     "test": {
+      "signals": 2499,
+      "trades": 1583,
+      "fillRate": 0.633,
+      "winRate": 0.335,
+      "avgR": -0.147,
+      "totalR": -232.1,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -244.2
+     }
+    },
+    {
+     "rrMin": 1.0,
+     "techMin": 80,
+     "train": {
+      "signals": 5759,
+      "trades": 3547,
+      "fillRate": 0.616,
+      "winRate": 0.322,
+      "avgR": -0.12,
+      "totalR": -424.3,
+      "profitFactor": 0.84,
+      "maxLosingStreak": 22,
+      "maxDrawdownR": -432.3
+     },
+     "test": {
+      "signals": 1077,
+      "trades": 666,
+      "fillRate": 0.618,
+      "winRate": 0.339,
+      "avgR": -0.078,
+      "totalR": -51.7,
+      "profitFactor": 0.89,
+      "maxLosingStreak": 13,
+      "maxDrawdownR": -64.2
+     }
+    },
+    {
+     "rrMin": 1.2,
+     "techMin": 50,
+     "train": {
+      "signals": 10554,
+      "trades": 6712,
+      "fillRate": 0.636,
+      "winRate": 0.318,
+      "avgR": -0.142,
+      "totalR": -949.8,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 28,
+      "maxDrawdownR": -969.3
+     },
+     "test": {
+      "signals": 2159,
+      "trades": 1355,
+      "fillRate": 0.628,
+      "winRate": 0.314,
+      "avgR": -0.152,
+      "totalR": -205.5,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 19,
+      "maxDrawdownR": -215.1
+     }
+    },
+    {
+     "rrMin": 1.2,
+     "techMin": 60,
+     "train": {
+      "signals": 10536,
+      "trades": 6704,
+      "fillRate": 0.636,
+      "winRate": 0.318,
+      "avgR": -0.142,
+      "totalR": -948.7,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 28,
+      "maxDrawdownR": -968.1
+     },
+     "test": {
+      "signals": 2150,
+      "trades": 1350,
+      "fillRate": 0.628,
+      "winRate": 0.313,
+      "avgR": -0.154,
+      "totalR": -208.0,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 19,
+      "maxDrawdownR": -217.6
+     }
+    },
+    {
+     "rrMin": 1.2,
+     "techMin": 70,
+     "train": {
+      "signals": 9848,
+      "trades": 6275,
+      "fillRate": 0.637,
+      "winRate": 0.314,
+      "avgR": -0.144,
+      "totalR": -904.5,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -921.1
+     },
+     "test": {
+      "signals": 1944,
+      "trades": 1230,
+      "fillRate": 0.633,
+      "winRate": 0.307,
+      "avgR": -0.161,
+      "totalR": -198.3,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 24,
+      "maxDrawdownR": -210.1
+     }
+    },
+    {
+     "rrMin": 1.2,
+     "techMin": 80,
+     "train": {
+      "signals": 4856,
+      "trades": 3025,
+      "fillRate": 0.623,
+      "winRate": 0.302,
+      "avgR": -0.126,
+      "totalR": -381.5,
+      "profitFactor": 0.83,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -394.3
+     },
+     "test": {
+      "signals": 893,
+      "trades": 551,
+      "fillRate": 0.617,
+      "winRate": 0.318,
+      "avgR": -0.078,
+      "totalR": -43.1,
+      "profitFactor": 0.89,
+      "maxLosingStreak": 15,
+      "maxDrawdownR": -57.9
+     }
+    },
+    {
+     "rrMin": 1.5,
+     "techMin": 50,
+     "train": {
+      "signals": 6532,
+      "trades": 4178,
+      "fillRate": 0.64,
+      "winRate": 0.272,
+      "avgR": -0.17,
+      "totalR": -711.2,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 36,
+      "maxDrawdownR": -727.8
+     },
+     "test": {
+      "signals": 1356,
+      "trades": 841,
+      "fillRate": 0.62,
+      "winRate": 0.27,
+      "avgR": -0.175,
+      "totalR": -147.4,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -153.7
+     }
+    },
+    {
+     "rrMin": 1.5,
+     "techMin": 60,
+     "train": {
+      "signals": 6532,
+      "trades": 4178,
+      "fillRate": 0.64,
+      "winRate": 0.272,
+      "avgR": -0.17,
+      "totalR": -711.2,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 36,
+      "maxDrawdownR": -727.8
+     },
+     "test": {
+      "signals": 1356,
+      "trades": 841,
+      "fillRate": 0.62,
+      "winRate": 0.27,
+      "avgR": -0.175,
+      "totalR": -147.4,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -153.7
+     }
+    },
+    {
+     "rrMin": 1.5,
+     "techMin": 70,
+     "train": {
+      "signals": 6243,
+      "trades": 4003,
+      "fillRate": 0.641,
+      "winRate": 0.271,
+      "avgR": -0.172,
+      "totalR": -686.6,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 35,
+      "maxDrawdownR": -699.3
+     },
+     "test": {
+      "signals": 1254,
+      "trades": 785,
+      "fillRate": 0.626,
+      "winRate": 0.266,
+      "avgR": -0.181,
+      "totalR": -142.4,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -149.7
+     }
+    },
+    {
+     "rrMin": 1.5,
+     "techMin": 80,
+     "train": {
+      "signals": 3515,
+      "trades": 2221,
+      "fillRate": 0.632,
+      "winRate": 0.26,
+      "avgR": -0.16,
+      "totalR": -355.5,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -366.7
+     },
+     "test": {
+      "signals": 628,
+      "trades": 383,
+      "fillRate": 0.61,
+      "winRate": 0.279,
+      "avgR": -0.087,
+      "totalR": -33.4,
+      "profitFactor": 0.89,
+      "maxLosingStreak": 16,
+      "maxDrawdownR": -43.9
+     }
+    },
+    {
+     "rrMin": 2.0,
+     "techMin": 50,
+     "train": {
+      "signals": 3065,
+      "trades": 2047,
+      "fillRate": 0.668,
+      "winRate": 0.227,
+      "avgR": -0.178,
+      "totalR": -364.3,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -374.1
+     },
+     "test": {
+      "signals": 629,
+      "trades": 407,
+      "fillRate": 0.647,
+      "winRate": 0.219,
+      "avgR": -0.195,
+      "totalR": -79.4,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -96.9
+     }
+    },
+    {
+     "rrMin": 2.0,
+     "techMin": 60,
+     "train": {
+      "signals": 3065,
+      "trades": 2047,
+      "fillRate": 0.668,
+      "winRate": 0.227,
+      "avgR": -0.178,
+      "totalR": -364.3,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -374.1
+     },
+     "test": {
+      "signals": 629,
+      "trades": 407,
+      "fillRate": 0.647,
+      "winRate": 0.219,
+      "avgR": -0.195,
+      "totalR": -79.4,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 23,
+      "maxDrawdownR": -96.9
+     }
+    },
+    {
+     "rrMin": 2.0,
+     "techMin": 70,
+     "train": {
+      "signals": 2986,
+      "trades": 1996,
+      "fillRate": 0.668,
+      "winRate": 0.223,
+      "avgR": -0.189,
+      "totalR": -378.0,
+      "profitFactor": 0.78,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -388.4
+     },
+     "test": {
+      "signals": 603,
+      "trades": 391,
+      "fillRate": 0.648,
+      "winRate": 0.215,
+      "avgR": -0.202,
+      "totalR": -79.0,
+      "profitFactor": 0.77,
+      "maxLosingStreak": 22,
+      "maxDrawdownR": -95.2
+     }
+    },
+    {
+     "rrMin": 2.0,
+     "techMin": 80,
+     "train": {
+      "signals": 2031,
+      "trades": 1331,
+      "fillRate": 0.655,
+      "winRate": 0.227,
+      "avgR": -0.157,
+      "totalR": -208.5,
+      "profitFactor": 0.81,
+      "maxLosingStreak": 20,
+      "maxDrawdownR": -221.5
+     },
+     "test": {
+      "signals": 360,
+      "trades": 232,
+      "fillRate": 0.644,
+      "winRate": 0.237,
+      "avgR": -0.088,
+      "totalR": -20.4,
+      "profitFactor": 0.89,
+      "maxLosingStreak": 28,
+      "maxDrawdownR": -36.6
+     }
+    },
+    {
+     "rrMin": 2.5,
+     "techMin": 50,
+     "train": {
+      "signals": 1574,
+      "trades": 1100,
+      "fillRate": 0.699,
+      "winRate": 0.185,
+      "avgR": -0.225,
+      "totalR": -247.6,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -262.4
+     },
+     "test": {
+      "signals": 312,
+      "trades": 220,
+      "fillRate": 0.705,
+      "winRate": 0.195,
+      "avgR": -0.165,
+      "totalR": -36.4,
+      "profitFactor": 0.82,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -50.5
+     }
+    },
+    {
+     "rrMin": 2.5,
+     "techMin": 60,
+     "train": {
+      "signals": 1574,
+      "trades": 1100,
+      "fillRate": 0.699,
+      "winRate": 0.185,
+      "avgR": -0.225,
+      "totalR": -247.6,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -262.4
+     },
+     "test": {
+      "signals": 312,
+      "trades": 220,
+      "fillRate": 0.705,
+      "winRate": 0.195,
+      "avgR": -0.165,
+      "totalR": -36.4,
+      "profitFactor": 0.82,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -50.5
+     }
+    },
+    {
+     "rrMin": 2.5,
+     "techMin": 70,
+     "train": {
+      "signals": 1554,
+      "trades": 1088,
+      "fillRate": 0.7,
+      "winRate": 0.186,
+      "avgR": -0.221,
+      "totalR": -240.3,
+      "profitFactor": 0.75,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -255.2
+     },
+     "test": {
+      "signals": 309,
+      "trades": 218,
+      "fillRate": 0.706,
+      "winRate": 0.197,
+      "avgR": -0.156,
+      "totalR": -34.1,
+      "profitFactor": 0.82,
+      "maxLosingStreak": 27,
+      "maxDrawdownR": -48.3
+     }
+    },
+    {
+     "rrMin": 2.5,
+     "techMin": 80,
+     "train": {
+      "signals": 1128,
+      "trades": 775,
+      "fillRate": 0.687,
+      "winRate": 0.192,
+      "avgR": -0.18,
+      "totalR": -139.2,
+      "profitFactor": 0.8,
+      "maxLosingStreak": 22,
+      "maxDrawdownR": -151.3
+     },
+     "test": {
+      "signals": 202,
+      "trades": 140,
+      "fillRate": 0.693,
+      "winRate": 0.214,
+      "avgR": -0.065,
+      "totalR": -9.1,
+      "profitFactor": 0.93,
+      "maxLosingStreak": 25,
+      "maxDrawdownR": -27.2
+     }
+    },
+    {
+     "rrMin": 3.0,
+     "techMin": 50,
+     "train": {
+      "signals": 920,
+      "trades": 676,
+      "fillRate": 0.735,
+      "winRate": 0.172,
+      "avgR": -0.195,
+      "totalR": -131.8,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 34,
+      "maxDrawdownR": -142.5
+     },
+     "test": {
+      "signals": 170,
+      "trades": 126,
+      "fillRate": 0.741,
+      "winRate": 0.206,
+      "avgR": -0.012,
+      "totalR": -1.5,
+      "profitFactor": 0.99,
+      "maxLosingStreak": 22,
+      "maxDrawdownR": -26.9
+     }
+    },
+    {
+     "rrMin": 3.0,
+     "techMin": 60,
+     "train": {
+      "signals": 920,
+      "trades": 676,
+      "fillRate": 0.735,
+      "winRate": 0.172,
+      "avgR": -0.195,
+      "totalR": -131.8,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 34,
+      "maxDrawdownR": -142.5
+     },
+     "test": {
+      "signals": 170,
+      "trades": 126,
+      "fillRate": 0.741,
+      "winRate": 0.206,
+      "avgR": -0.012,
+      "totalR": -1.5,
+      "profitFactor": 0.99,
+      "maxLosingStreak": 22,
+      "maxDrawdownR": -26.9
+     }
+    },
+    {
+     "rrMin": 3.0,
+     "techMin": 70,
+     "train": {
+      "signals": 908,
+      "trades": 668,
+      "fillRate": 0.736,
+      "winRate": 0.172,
+      "avgR": -0.193,
+      "totalR": -129.0,
+      "profitFactor": 0.79,
+      "maxLosingStreak": 33,
+      "maxDrawdownR": -136.7
+     },
+     "test": {
+      "signals": 168,
+      "trades": 125,
+      "fillRate": 0.744,
+      "winRate": 0.208,
+      "avgR": -0.003,
+      "totalR": -0.4,
+      "profitFactor": 1.0,
+      "maxLosingStreak": 21,
+      "maxDrawdownR": -25.8
+     }
+    },
+    {
+     "rrMin": 3.0,
+     "techMin": 80,
+     "train": {
+      "signals": 684,
+      "trades": 494,
+      "fillRate": 0.722,
+      "winRate": 0.184,
+      "avgR": -0.13,
+      "totalR": -64.5,
+      "profitFactor": 0.85,
+      "maxLosingStreak": 26,
+      "maxDrawdownR": -75.5
+     },
+     "test": {
+      "signals": 118,
+      "trades": 88,
+      "fillRate": 0.746,
+      "winRate": 0.239,
+      "avgR": 0.127,
+      "totalR": 11.1,
+      "profitFactor": 1.15,
+      "maxLosingStreak": 17,
+      "maxDrawdownR": -19.4
+     }
+    }
+   ],
+   "bestOnTrain": {
+    "rrMin": 1.0,
+    "techMin": 80,
+    "train": {
+     "signals": 5759,
+     "trades": 3547,
+     "fillRate": 0.616,
+     "winRate": 0.322,
+     "avgR": -0.12,
+     "totalR": -424.3,
+     "profitFactor": 0.84,
+     "maxLosingStreak": 22,
+     "maxDrawdownR": -432.3
+    },
+    "test": {
+     "signals": 1077,
+     "trades": 666,
+     "fillRate": 0.618,
+     "winRate": 0.339,
+     "avgR": -0.078,
+     "totalR": -51.7,
+     "profitFactor": 0.89,
+     "maxLosingStreak": 13,
+     "maxDrawdownR": -64.2
+    }
+   }
+  }
+ }
+}
